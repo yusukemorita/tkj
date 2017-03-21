@@ -16,3 +16,57 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+/////////////background//////////////
+body {
+}
+/////////////nav_bar/////////////////
+.nav_bar {
+  position: absolute;
+  left: 0px;
+}
+.nav_bar ul {
+  list-style-type: none;
+  margin-bottom: 10px;
+  padding: 0;
+}
+.nav_bar li{
+  display: table;
+  text-align: center;
+  font-size: 1.5em;
+  float: left;
+  transition: 0.5s;
+}
+//TODO not working
+.nav_list{
+  width: 180px;
+  height: 80px;
+}
+//TODO end
+.nav_bar li:hover{
+  -webkit-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  transform: scale(0.8);
+  transition: 0.5s;
+}
+.nav_bar a:hover{
+  text-decoration: none;
+  background-color: inherit;
+}
+.nav_bar a{
+  display: table-cell;
+  vertical-align: middle;
+  color: white;
+}
+.nav_bar .li_1{
+  background-color: #465C8B;
+}
+.nav_bar .li_2{
+  background-color: #93C178;
+}
+.nav_bar .li_3{
+  background-color: #F7EF6A;
+}
+.nav_bar .li_4{
+  background-color: #DFDCE3;
+}

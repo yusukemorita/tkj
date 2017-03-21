@@ -1,0 +1,37 @@
+<%= form_for(@place) do |f| %>
+  <% if @place.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@place.errors.count, "error") %> prohibited this place from being saved:</h2>
+
+      <ul>
+      <% @place.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    名前<br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    ホームページ<br>
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    緯度<br>
+    <%= f.text_field :latitude %>
+  </div>
+  <div class="field">
+    経度<br>
+    <%= f.text_field :longitude %>
+  </div>
+  <div class="field">
+    その他<br>
+    <%= f.text_area :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit class:"btn default-btn" %>
+  </div>
+<% end %>

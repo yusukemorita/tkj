@@ -1,0 +1,74 @@
+<head>
+  <% stylesheet_link_tag "map" %>
+</head>
+<div id="map" style="width:800px; height:800px"></div>
+
+<script type="text/javascript">
+
+	var map;
+
+  var places = <%=raw @places.to_json %>;
+
+	console.log(places);
+
+  function mapSize() {
+    var navbar_height = $('.navbar').height();
+    var top_bottom_margin = (screen.height - navbar_height)*0.1;
+    $('#map').height((screen.height - navbar_height)*0.8);
+    $('#map').width(screen.width*0.8);
+    $('#map').css({'margin-top':top_bottom_margin});
+    $('#map').css({'margin-bottom':top_bottom_margin});
+    google.maps.event.trigger(map, 'resize');
+  }
+
+	function initMap() {
+		map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat:35.690503, lng:139.700419} ,
+			zoom: 12
+		});
+
+    //現在地マーカー作成
+		var infowindow = new google.maps.InfoWindow();
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        var marker = new google.maps.Marker({
+          icon: '/assets/current_position.png',
+          position: pos,
+          map: map
+        });
+        map.setCenter(pos);
+      }, function() {
+        handleLocationError(true, infoWindow, map.getCenter());
+      });
+    } else {
+      // Browser doesn't support Geolocation
+      handleLocationError(false, infoWindow, map.getCenter());
+    }
+    
+    for (i = 0; i < places.length; i++) { 
+      var marker = new google.maps.Marker({
+        position: {lat: eval(places[i].latitude), lng: eval(places[i].longitude)},
+        map: map,
+        title: places[i].title,
+				animation: google.maps.Animation.DROP
+      });
+			google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent('<div id="content">' + places[i].title + '<br>' + '<a href = ' + '/places/' + places[i].id + '>詳細</a>' + '</div>');
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+
+		}
+    mapSize();			
+  }
+
+</script>
+
+<script async defer 
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1UBETjFq1eApVpLAX-JdAz3tsHf7Bpsc&callback=initMap">
+</script>

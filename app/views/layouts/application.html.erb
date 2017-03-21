@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tkj</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div class="background"></div>
+  
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <%= link_to "卓球場マップ", map_path, class:"navbar-brand" %>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><%= link_to '一覧', root_path %>
+        <li><%= link_to '新規登録', new_place_path %></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <%= yield %>
+
+</body>
+</html>

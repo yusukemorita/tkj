@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+
+  <p>
+    <strong>卓球場名</strong>
+    <%= @place.title %>
+  </p>
+
+  <p>
+    <strong>ホームページ</strong>
+    <%= @place.url %>
+  </p>
+  
+  <p>
+    <strong>その他</strong>
+    <%= @place.content %>
+  </p>
+
+  <p>
+    <strong>緯度</strong>
+    <%= @place.latitude %>
+  </p>
+  <p>
+    <strong>経度</strong>
+    <%= @place.longitude %>
+  </p>
+  
+  <div id="map" style="width:620px; height:400px"></div>
+  <br>
+	<%= link_to 'Edit', edit_place_path(@place), class:'btn btn-default' %>
+	<%= link_to 'Back', places_path, class:'btn btn-default'%>
+
+</div>
+
+<script type="text/javascript">
+
+	var map;
+
+	function initMap() {
+		
+    var myLatLng = {lat: <%=@place.latitude %>, lng: <%= @place.longitude %> };
+
+		map = new google.maps.Map(document.getElementById('map'), {
+			center: myLatLng,
+			zoom: 17
+		});
+
+		var marker = new google.maps.Marker({
+			position: myLatLng,
+			map: map,
+      title: "<%= @place.title %>"
+		});
+	}
+
+</script>
+
+<script async defer 
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1UBETjFq1eApVpLAX-JdAz3tsHf7Bpsc&callback=initMap">
+</script>

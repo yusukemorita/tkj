@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="container-fluid">
+  <h1>卓球場一覧</h1>
+
+  <div class="row">
+    <div class='col-sm-4'><h3>卓球場名</h3></div>
+    <div class='col-sm-5'><h3>ホームページ</h3></div>
+    <div class='col-sm-1'></div>
+    <div class='col-sm-1'></div>
+    <div class='col-sm-1'></div>
+  </div>
+  <br>
+  <div class="row">
+    <% @places.each do |place| %>
+      <div class='col-sm-4'><%= place.title %></div>
+      <div class='col-sm-5'><%= place.url %></div>
+      <div class='col-sm-1'><%= link_to 'Show', place, class:'btn btn-info' %></div>
+      <div class='col-sm-1'><%= link_to 'Edit', edit_place_path(place), class:'btn btn-info' %></div>
+      <div class='col-sm-1'><%= link_to 'Destroy', place, class:'btn btn-danger', medivod: :delete, data: { confirm: 'Are you sure?' } %></div>
+    <% end %>
+  </div>
+  <%= link_to '新しい卓球場を登録', new_place_path, class:"btn btn-success" %>
+
+</div>
+<br>
+

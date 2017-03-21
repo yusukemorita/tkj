@@ -1,25 +1,14 @@
 <head>
   <% stylesheet_link_tag "map" %>
+  <% javascript_include_tag "map.coffee" %>
 </head>
-<div id="map" style="width:800px; height:800px"></div>
+<div id="map" style="width:400px; height:400px"></div>
 
 <script type="text/javascript">
 
 	var map;
 
   var places = <%=raw @places.to_json %>;
-
-	console.log(places);
-
-  function mapSize() {
-    var navbar_height = $('.navbar').height();
-    var top_bottom_margin = (screen.height - navbar_height)*0.1;
-    $('#map').height((screen.height - navbar_height)*0.8);
-    $('#map').width(screen.width*0.8);
-    $('#map').css({'margin-top':top_bottom_margin});
-    $('#map').css({'margin-bottom':top_bottom_margin});
-    google.maps.event.trigger(map, 'resize');
-  }
 
 	function initMap() {
 		map = new google.maps.Map(document.getElementById('map'), {
@@ -48,8 +37,8 @@
       // Browser doesn't support Geolocation
       handleLocationError(false, infoWindow, map.getCenter());
     }
-    
-    for (i = 0; i < places.length; i++) { 
+
+    for (i = 0; i < places.length; i++) {
       var marker = new google.maps.Marker({
         position: {lat: eval(places[i].latitude), lng: eval(places[i].longitude)},
         map: map,
@@ -62,13 +51,11 @@
           infowindow.open(map, marker);
         }
       })(marker, i));
-
 		}
-    mapSize();			
   }
 
 </script>
 
-<script async defer 
+<script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1UBETjFq1eApVpLAX-JdAz3tsHf7Bpsc&callback=initMap">
 </script>

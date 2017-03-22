@@ -2,25 +2,28 @@
 <html>
 <head>
   <title>卓球マップ</title>
+  <link href="https://fonts.googleapis.com/earlyaccess/mplus1p.css" rel="stylesheet" />
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-  <div class="background"></div>
-
   <div class="container">
     <div class="nav_bar">
       <ul>
-        <li class="li_1 nav_list"><a href="/map">卓球マップ</a></li>
-        <li class="li_2 nav_list"><%= link_to '一覧', root_path %>
-        <li class="li_3 nav_list"><%= link_to '卓球場を新規登録', new_place_path %></li>
+        <li class="li_head nav_list wf-mplus1p"><a href="/map">卓球マップ</a></li>
+        <li class="li_sub nav_list wf-mplus1p"><%= link_to '一覧', root_path %>
+        <li class="li_sub nav_list wf-mplus1p"><%= link_to '卓球場を新規登録', new_place_path %></li>
       </ul>
     </div>
   </div>
 
+  <div class="blank_div"></div>
+
   <%= yield %>
+
+  <div class="footer"></div>
 
 </body>
 </html>

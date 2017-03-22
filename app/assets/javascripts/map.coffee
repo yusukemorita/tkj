@@ -3,15 +3,22 @@ $(document).on 'turbolinks:load', ->
 
 app =
   initialize: ->
-    navbar_height = $('.nav_bar').height()
-    available_window_height = $(window).height() - navbar_height
+    navbar_height = $('.blank_div').height()
+    footer_height = $('.footer').height()
+    available_window_height = $(window).height() - navbar_height - footer_height
     window_width = $(window).width()
     map_height = available_window_height * 0.8
-    map_width = window_width * 0.8
+    map_width = window_width * 0.6
     console.log "map_width=#{map_width}, map_height=#{map_height}"
+    def_margin = available_window_height * 0.1
     $('#map').css
       width: map_width
       height: map_height
-      top: navbar_height + available_window_height * 0.1
-    #TODO not working
-    $('.nav_list').width(available_window_width / 3)
+      margin: def_margin
+    $('.parent').css
+      width: window_width - available_window_height * 0.4 - map_width
+      height: map_height
+      marginTop: def_margin
+      marginRight:0
+      marginBottom: def_margin
+      marginLeft: def_margin

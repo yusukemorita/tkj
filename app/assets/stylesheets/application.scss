@@ -18,17 +18,16 @@
 @import "bootstrap";
 
 /////////////background//////////////
+* {
+  line-height: 150%;
+}
 body {
   color: white;
   background-color: #636EA0;
-  font-weight: 300;
-  font-family: "Mplus 1p";
-  line-height: 150%;
 }
 .wf-mplus1p {
   font-weight: 300;
   font-family: "Mplus 1p";
-  line-height: 150%;
 }
 .footer{
   position: absolute;
@@ -60,9 +59,15 @@ body {
   display: table;
   text-align: center;
   font-size: 1.5em;
-  float: left;
   transition: 0.5s;
   background-color: white;
+}
+.nav_bar .li_head,
+.nav_bar .li_sub {
+  float: left;
+}
+.nav_bar .li_right {
+  float: right;
 }
 .nav_list{
   width: 180px;

@@ -15,13 +15,16 @@
         <li class="li_head nav_list wf-mplus1p"><a href="/map">卓球マップ</a></li>
         <li class="li_sub nav_list wf-mplus1p"><%= link_to '一覧', root_path %>
         <li class="li_sub nav_list wf-mplus1p"><%= link_to '卓球場を新規登録', new_place_path %></li>
+        <li class="li_sub nav_list li_right wf-mplus1p"><%= link_to '管理者ログイン', new_user_registration_path %></li>
       </ul>
     </div>
   </div>
 
   <div class="blank_div"></div>
 
-  <%= yield %>
+  <div class="container yield_container">
+    <%= yield %>
+  </div>
 
   <div class="footer"></div>
 

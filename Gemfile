@@ -31,10 +31,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-###自分で追加したgem
+##########################################自分で追加したgem
 gem 'hirb', '~> 0.7.3'
 gem 'bootstrap-sass'
-###ここまで自分で追加
+
+#ユーザー機能
+gem 'devise', '3.5.1'
+
+##########################################ここまで自分で追加
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

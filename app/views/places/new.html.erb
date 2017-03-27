@@ -1,18 +1,14 @@
-<div class="container"> 
+<head>
+  <% stylesheet_link_tag "new" %>
+</head>
 
-  <h1>新しい卓球場を登録</h1>
-
-  <div style="float:left;">
-    <%= render 'form' %>
-  </div>
-
-  <input id="pac-input" class="controls" type="text" placeholder="Search Box">      
-  <div id="map" style="width:620px; height:400px; float:right;"></div>
-
-  <br>
-  <%= link_to 'Back', places_path, class:'btn btn-default'%>
-
+<div class='new_form'>
+  <p class='new_title wf-mplus1p'>新しい卓球場を登録</p>
+  <%= render 'form' %>
 </div>
+
+<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+<div id="map"></div>
 
 <script type="text/javascript">
   function initAutocomplete() {
@@ -94,6 +90,6 @@
     });
   }
 </script>
-<script async defer 
+<script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1UBETjFq1eApVpLAX-JdAz3tsHf7Bpsc&libraries=places&callback=initAutocomplete">
 </script>

@@ -15,3 +15,11 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-sprockets
+
+//navbar mobile dropdown menu
+$(document).ready(function() {
+  $('.menu_icon').click(function(){
+    console.log('clicked');
+    $('#dropdown').toggle();
+  });
+});

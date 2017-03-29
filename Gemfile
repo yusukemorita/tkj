@@ -38,6 +38,8 @@ gem 'bootstrap-sass'
 #ユーザー機能
 gem 'devise', '3.5.1'
 
+#aws用
+gem 'puma'
 ##########################################ここまで自分で追加
 
 group :development, :test do

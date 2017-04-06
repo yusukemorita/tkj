@@ -1,5 +1,5 @@
 <head>
-  <% stylesheet_link_tag "new" %>
+  <%= javascript_include_tag "new", "data-turbolinks-track" => "false" %>
 </head>
 
 <div class='new_form'>
@@ -8,7 +8,7 @@
 </div>
 
 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-<div id="map"></div>
+<div id="map" class="new_map"></div>
 
 <script type="text/javascript">
   function initAutocomplete() {

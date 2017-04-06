@@ -1,6 +1,5 @@
 <head>
-  <% stylesheet_link_tag "map" %>
-  <% javascript_include_tag "map.coffee" %>
+  <%= javascript_include_tag "map", "data-turbolinks-track" => "false" %>
 </head>
 
 <div class="parent">
@@ -10,7 +9,7 @@
   </div>
 </div>
 
-<div id="map"></div>
+<div id="map" class="map_map"></div>
 
 <script type="text/javascript">
 

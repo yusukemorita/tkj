@@ -1,14 +1,13 @@
-#map, .parent {
+.map_map, .parent {
   margin-top: 5%;
   margin-bottom: 5%;
 }
-#map {
+.map_map {
   bottom: 0px;
   top: 0px;
-  height: 340px;
   width: auto;
 }
-#map #pac-input {
+.map_map #pac-input {
   color: black;
 }
 .parent {
@@ -27,11 +26,11 @@
 
 /* desktop */
 @media only screen and (min-width: 600px) {
-  #map, .parent {
+  .map_map, .parent {
     margin-top: 5%;
     margin-bottom: 5%;
   }
-  #map {
+  .map_map {
     float: right;
     width: 60%;
   }

@@ -1,4 +1,4 @@
-$(document).on 'turbolinks:load', ->
+$(document).ready ->
   app.initialize()
   console.log 'map.coffee called'
 

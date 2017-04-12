@@ -4,6 +4,12 @@
 .new_map #pac-input {
   color: black;
 }
+.new_title {
+  color: white;
+}
+.new_form p {
+  color: white;
+}
 .new_form .new_title {
   font-size: 1.5em;
 }

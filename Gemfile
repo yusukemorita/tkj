@@ -34,6 +34,7 @@ gem 'unicorn'
 # gem 'capistrano-rails', group: :development
 
 ##########################################自分で追加したgem
+gem 'xcode-install'
 gem 'hirb', '~> 0.7.3'
 gem 'bootstrap-sass'
 gem 'mysql2'

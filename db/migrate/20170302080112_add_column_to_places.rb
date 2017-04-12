@@ -1,6 +1,6 @@
 class AddColumnToPlaces < ActiveRecord::Migration
   def change
-    add_column :places, :latitude, :number
-    add_column :places, :longitude, :number
+    add_column :places, :latitude, :float
+    add_column :places, :longitude, :float
   end
 end

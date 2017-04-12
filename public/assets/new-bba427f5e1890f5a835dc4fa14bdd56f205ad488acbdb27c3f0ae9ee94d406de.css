@@ -1,0 +1,23 @@
+.new_map {
+  width: 100%;
+}
+.new_map #pac-input {
+  color: black;
+}
+.new_form .new_title {
+  font-size: 1.5em;
+}
+@media only screen and (min-width: 600px) {
+  .new_map {
+    float: right;
+    margin: 5% 0;
+  }
+  .new_form {
+    width: 30%;
+    margin: 30px;
+    float: left;
+  }
+  .new_form .new_title {
+    font-size: 2em;
+  }
+}

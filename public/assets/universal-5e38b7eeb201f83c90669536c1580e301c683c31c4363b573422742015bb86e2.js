@@ -1,0 +1,1 @@
+(function(){var t;$(document).ready(function(){return t.initialize(),console.log("universal.coffee called")}),t={initialize:function(){return $(".menu_icon").click(function(){return console.log("clicked"),$("#dropdown").toggle()})}}}).call(this);

@@ -14,4 +14,3 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require universal
-//= require_tree

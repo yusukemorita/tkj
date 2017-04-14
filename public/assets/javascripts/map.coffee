@@ -1,6 +1,6 @@
 $(document).ready ->
   app.initialize()
-  console.log 'map.coffee called'
+  console.log 'moved map.coffee called'
 
 app =
   initialize: ->

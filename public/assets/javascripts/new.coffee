@@ -1,6 +1,6 @@
 $(document).ready ->
   app.initialize()
-  console.log 'new.coffee called'
+  console.log 'moved new.coffee called'
 
 app =
   initialize: ->

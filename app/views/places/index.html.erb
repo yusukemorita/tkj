@@ -13,15 +13,24 @@
   <br>
   <div class="row" style="color:white">
     <% @places.each do |place| %>
+
       <div class='col-sm-4'><%= place.title %></div>
-      <div class='col-sm-5'><%= place.url %></div>
+
+      <div class='col-sm-5'>
+        <% if place.url.size > 0 %>
+          <%= place.url %>
+        <% else %>
+          未登録
+        <% end %>
+      </div>
+
+      <div class='col-sm-1'><%= link_to '詳細', place, class:'btn btn-info' %></div>
+      <div class='col-sm-1'><%= link_to '編集', edit_place_path(place), class:'btn btn-info' %></div>
+
       <% if user_signed_in? %>
-        <div class='col-sm-1'><%= link_to 'Show', place, class:'btn btn-info' %></div>
-        <div class='col-sm-1'><%= link_to 'Edit', edit_place_path(place), class:'btn btn-info' %></div>
-        <div class='col-sm-1'><%= link_to 'Destroy', place, class:'btn btn-danger', medivod: :delete, data: { confirm: 'Are you sure?' } %></div>
-      <% else %>
-        <div class='col-sm-3'><%= link_to 'Show', place, class:'btn btn-info' %></div>
+        <div class='col-sm-1'><%= link_to '削除', place, class:'btn btn-danger', medivod: :delete, data: { confirm: 'Are you sure?' } %></div>
       <% end %>
+
     <% end %>
   </div>
   <br>

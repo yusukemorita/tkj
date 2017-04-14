@@ -1,35 +1,42 @@
-<p id="notice"><%= notice %></p>
+<p id="notice" style="color:white"><%= notice %></p>
 
 <div class="container">
 
-  <p>
-    <strong>卓球場名</strong>
-    <%= @place.title %>
-  </p>
+  <div class="show_text">
+    <p>
+      <strong>卓球場名</strong><br>
+      <%= @place.title %>
+    </p>
 
-  <p>
-    <strong>ホームページ</strong>
-    <%= @place.url %>
-  </p>
-  
-  <p>
-    <strong>その他</strong>
-    <%= @place.content %>
-  </p>
+    <p>
+      <strong>ホームページ</strong><br>
+      <% if @place.url.size > 0 %>
+        <%= @place.url %>
+      <% else %>
+        未登録
+      <% end %>
+    </p>
 
-  <p>
-    <strong>緯度</strong>
-    <%= @place.latitude %>
-  </p>
-  <p>
-    <strong>経度</strong>
-    <%= @place.longitude %>
-  </p>
-  
-  <div id="map" style="width:620px; height:400px"></div>
-  <br>
+    <p>
+      <strong>その他</strong><br>
+      <%= @place.content %>
+    </p>
+
+    <p>
+      <strong>緯度</strong><br>
+      <%= @place.latitude %>
+    </p>
+    <p>
+      <strong>経度</strong><br>
+      <%= @place.longitude %>
+    </p>
+
 	<%= link_to 'Edit', edit_place_path(@place), class:'btn btn-default' %>
 	<%= link_to 'Back', places_path, class:'btn btn-default'%>
+  </div>
+
+  <div class="show_map" id="map" style="width:620px; height:400px"></div>
+  <br>
 
 </div>
 
@@ -38,7 +45,7 @@
 	var map;
 
 	function initMap() {
-		
+
     var myLatLng = {lat: <%=@place.latitude %>, lng: <%= @place.longitude %> };
 
 		map = new google.maps.Map(document.getElementById('map'), {

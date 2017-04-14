@@ -1,0 +1,9 @@
+.show_map {
+  float: right;
+}
+.show_text p {
+  color: white;
+}
+.show_text {
+  float: left;
+}

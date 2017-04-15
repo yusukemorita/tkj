@@ -17,11 +17,11 @@
 }
 .parent .child .main_text {
   color: white;
-  font-size: 2.7em;
+  font-size: 2em;
 }
 .parent .child .sub_text{
   color: #212832;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 /* desktop */
@@ -46,11 +46,9 @@
     display: table-cell;
   }
   .parent .child .main_text {
-    color: white;
     font-size: 2.7em;
   }
   .parent .child .sub_text{
-    color: #212832;
     font-size: 2em;
   }
 }

@@ -70,7 +70,16 @@
         });
 				markers.push(marker);
 				google.maps.event.addListener(marker, 'click', function(evt) {
-          infowindow.setContent(place.name + '<br>' + '<a href=' + place.website + '>ホームページ</a>' + '<br>' + place.geometry.location.lat().toString() + ',' + place.geometry.location.lng().toString());
+          if (place.website != undefined) {
+            infowindow.setContent(
+              place.name + '<br>' +
+              '<a href=' + place.website + '>ホームページ</a>' + '<br>' +
+              place.geometry.location.lat().toString() + ',' + place.geometry.location.lng().toString());
+          } else {
+            infowindow.setContent(
+              place.name + '<br>' +
+              place.geometry.location.lat().toString() + ',' + place.geometry.location.lng().toString());
+          }
           infowindow.open(map, marker);
           $('#place_latitude').val(place.geometry.location.lat().toString());
           $('#place_longitude').val(place.geometry.location.lng().toString());

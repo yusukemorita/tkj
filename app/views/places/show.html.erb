@@ -11,7 +11,7 @@
     <p>
       <strong>ホームページ</strong><br>
       <% if @place.url.size > 0 %>
-        <%= @place.url %>
+        <a href=<%= @place.url %> style="color:white"><%= @place.url %></a>
       <% else %>
         未登録
       <% end %>

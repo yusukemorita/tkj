@@ -3,6 +3,7 @@
 <div class='new_form'>
   <p class='new_title wf-mplus1p'>新しい卓球場を登録</p>
   <%= render 'form' %>
+  <p>※緯度経度はGoogleマップ上のアイコンをクリックすれば自動的に登録されます。</p>
 </div>
 
 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
@@ -11,7 +12,7 @@
 <script type="text/javascript">
   function initAutocomplete() {
     var map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: -33.8688, lng: 151.2195},
+      center: {lat: 35.689791, lng: 139.692133},
       zoom: 13,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });

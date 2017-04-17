@@ -23,7 +23,9 @@
   color: #212832;
   font-size: 1.5em;
 }
-
+.parent .child .map_news {
+  display: none;
+}
 /* desktop */
 @media only screen and (min-width: 600px) {
   .map_map, .parent {
@@ -50,6 +52,14 @@
   }
   .parent .child .sub_text{
     font-size: 2em;
+  }
+  .parent .child li,
+  .parent .child .map_news p {
+    color: white;
+    list-style: none;
+  }
+  .parent .child .map_news {
+    display: inline;
   }
 }
 

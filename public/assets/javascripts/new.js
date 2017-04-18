@@ -4,15 +4,19 @@
 
   $(document).ready(function() {
     app.initialize();
-    return console.log('moved new.coffee called');
+    return console.log('public new.coffee called');
   });
 
   app = {
     initialize: function() {
+      var available_height;
       if ($(window).width() > 600) {
+        available_height = $(window).outerHeight(true) - $('.nav_bar').outerHeight() - $('.footer').height();
         return $('.new_map').css({
+          marginTop: available_height * 0.1,
+          marginBottom: available_height * 0.1,
           width: $('.yield_container').width() - $('.new_form').outerWidth(true),
-          height: ($(window).height() - $('.footer').outerHeight(true) - $('.blank_div').outerHeight(true)) * 0.8
+          height: $('.new_form').height()
         });
       } else {
         return $('.new_map').css({

@@ -20,15 +20,8 @@
   color: #212832;
   font-size: 1.5em;
 }
-.parent .child .map_news {
-  display: none;
-}
 /* desktop */
 @media only screen and (min-width: 600px) {
-  .map_map, .parent {
-    margin-top: 5%;
-    margin-bottom: 5%;
-  }
   .map_map {
     float: right;
     width: 60%;
@@ -57,9 +50,6 @@
   }
   .parent .child .map_news {
     display: inline;
-  }
-  .footer_blank_div {
-    display: none;
   }
 }
 

@@ -1,12 +1,10 @@
 $(document).ready ->
   app.initialize()
-  console.log 'moved map.coffee called'
+  console.log 'public map.coffee called'
 
 app =
   initialize: ->
-    navbar_height = $('.blank_div').height()
-    footer_height = $('.footer').height()
-    available_window_height = $(window).height() - navbar_height - footer_height
+    available_window_height = $(window).height() - $('.nav_bar').height() - $('.footer').height()
     window_width = $('.yield_container').width()
     map_width = window_width * 0.6
     def_margin = available_window_height * 0.1

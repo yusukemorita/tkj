@@ -16,9 +16,9 @@
 
       <div class='col-sm-4'><%= place.title %></div>
 
-      <div class='col-sm-5'>
+      <div class='col-sm-5 place_list'>
         <% if place.url.size > 0 %>
-          <%= place.url %>
+          <a href = <%= place.url %>><%= truncate(place.url, length: 40) %></a>
         <% else %>
           未登録
         <% end %>

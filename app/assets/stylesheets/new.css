@@ -1,5 +1,6 @@
 .new_map {
   width: 100%;
+  position: fixed;
 }
 .new_map #pac-input {
   color: black;

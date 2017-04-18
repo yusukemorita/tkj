@@ -4,16 +4,21 @@ $(document).ready ->
 
 app =
   initialize: ->
-    available_window_height = $(window).height() - $('.nav_bar').height() - $('.footer').height()
+    $('.footer_blank_div').css
+      display: 'none'
+    available_height = $(window).height() - $('.nav_bar').height() - $('.footer').height()
     window_width = $('.yield_container').width()
     map_width = window_width * 0.6
-    def_margin = available_window_height * 0.1
+    def_margin = available_height * 0.1
     if $(window).width() > 600
       $('.map_map').css
-        height: available_window_height * 0.8
-      console.log available_window_height * 0.8
+        height: available_height * 0.8
+        marginTop: available_height * 0.1
+        marginBottom: available_height * 0.1
       $('.parent').css
-        height: available_window_height * 0.8
+        marginTop: available_height * 0.1
+        marginBottom: available_height * 0.1
+        height: available_height * 0.8
         marginRight:0
     else
       $('.map_map').css

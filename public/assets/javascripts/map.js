@@ -4,15 +4,14 @@
 
   $(document).ready(function() {
     app.initialize();
-    return console.log('moved map.coffee called');
+    return console.log('public map.coffee called');
   });
 
   app = {
     initialize: function() {
-      var available_window_height, def_margin, footer_height, map_width, navbar_height, window_width;
-      navbar_height = $('.blank_div').height();
-      footer_height = $('.footer').height();
-      available_window_height = $(window).height() - navbar_height - footer_height;
+      var available_window_height, def_margin, map_width, navbar_height, window_width;
+      navbar_height = $('.header_blank_div').height();
+      available_window_height = $(window).height() - $('.nav_bar').height() - $('.footer').height();
       window_width = $('.yield_container').width();
       map_width = window_width * 0.6;
       def_margin = available_window_height * 0.1;

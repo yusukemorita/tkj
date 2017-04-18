@@ -58,5 +58,8 @@
   .parent .child .map_news {
     display: inline;
   }
+  .footer_blank_div {
+    display: none;
+  }
 }
 

@@ -58,7 +58,7 @@
       });
 			google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-          infowindow.setContent('<div id="content">' + places[i].title + '<br>' + '<a href = ' + '/places/' + places[i].id + '>詳細</a>' + '</div>');
+          infowindow.setContent('<div id="content">' + places[i].title + '<br>' + '<a href = /places/' + places[i].id + '>詳細</a>' + '<br>' + '<a href = https://google.com/maps/place/' + places[i].title + '>Googleマップで開く</a>' + '</div>');
           infowindow.open(map, marker);
         }
       })(marker, i));

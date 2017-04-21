@@ -3,14 +3,22 @@
   var app;
 
   $(document).ready(function() {
-    app.initialize();
-    return console.log('public new.coffee called');
+    console.log('public new.coffee called');
+    return app.initialize();
   });
 
   app = {
     initialize: function() {
       var available_height;
+      $('.tip_popover').popover('show');
+      $('.popover').click(function() {
+        return $('.tip_popover').popover('hide');
+      });
       if ($(window).width() > 600) {
+        $('.popover').css({
+          top: $('#place_address').offset().top,
+          left: $('#place_address').offset().left + $('#place_address').width()
+        });
         available_height = $(window).outerHeight(true) - $('.nav_bar').outerHeight() - $('.footer').height();
         return $('.new_map').css({
           marginTop: available_height * 0.1,
@@ -19,6 +27,16 @@
           height: $('.new_form').height()
         });
       } else {
+        $('.actions').css({
+          left: 0.5 * ($('.yield_container').width() - $('.actions').width())
+        });
+        $('.new_form input').css({
+          width: $('.yield_container').width() * 0.43
+        });
+        $('.popover').css({
+          top: '60%',
+          left: 0.5 * ($('.yield_container').width() - $('.popover').width())
+        });
         return $('.new_map').css({
           height: ($(window).height() - $('.new_form').offset().top - $('.new_form').outerHeight(true)) * 0.9
         });

@@ -2,11 +2,12 @@
 
 <div class='new_form'>
   <p class='new_title wf-mplus1p'>新しい卓球場を登録</p>
-  <p>※緯度経度はGoogleマップ上のアイコンをクリックすれば自動的に登録されます。</p>
   <%= render 'form' %>
 </div>
 
-<input id="pac-input" class="controls" type="text" placeholder="SearchBox">
+<a data-placement="right" data-toggle="popover" data-html="true" title="自動入力" style="display:none;" class="tip_popover" data-content="<strong>名前</strong>、<strong>住所</strong>、<strong>緯度・経度</strong>はGoogleマップで検索したアイコンをクリックすると自動入力されます。<br>クリックするとこのポップアップは消えます。"></a>
+
+<input id="pac-input" class="controls" type="text" placeholder="卓球場を検索">
 <div id="map" class="new_map"></div>
 
 <script type="text/javascript">
@@ -74,6 +75,7 @@
         });
 				markers.push(marker);
 				google.maps.event.addListener(marker, 'click', function(evt) {
+          console.log(place.formatted_address);
           if (place.website != undefined) {
             infowindow.setContent(
               place.name + '<br>' +
@@ -85,6 +87,7 @@
               place.geometry.location.lat().toString() + ',' + place.geometry.location.lng().toString());
           }
           infowindow.open(map, marker);
+          $('#place_address').val(place.formatted_address);
           $('#place_latitude').val(place.geometry.location.lat().toString());
           $('#place_longitude').val(place.geometry.location.lng().toString());
           $('#place_title').val(place.name);

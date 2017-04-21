@@ -14,8 +14,11 @@
 .new_form .new_title {
   font-size: 1.5em;
 }
-.new_form input {
-  width: 120px;
+.popover-title {
+  text-align: center;
+}
+.popover.right > .arrow {
+  visibility: hidden;
 }
 @media only screen and (min-width: 600px) {
   .new_map {
@@ -29,8 +32,5 @@
   }
   .new_form .new_title {
     font-size: 2em;
-  }
-  .new_form input {
-    width: auto;
   }
 }

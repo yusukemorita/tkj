@@ -36,7 +36,7 @@ class PlacesController < ApplicationController
 
     respond_to do |format|
       if @place.save
-        format.html { redirect_to @place, notice: 'Place was successfully created.' }
+        format.html { redirect_to @place, notice: '新規卓球場の登録ありがとうございます。' }
         format.json { render :show, status: :created, location: @place }
       else
         format.html { render :new }
@@ -77,6 +77,6 @@ class PlacesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def place_params
-      params.require(:place).permit(:title, :url, :latitude, :longitude, :station)
+      params.require(:place).permit(:title, :url, :latitude, :longitude, :content)
     end
 end

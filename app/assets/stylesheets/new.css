@@ -14,6 +14,9 @@
 .new_form .new_title {
   font-size: 1.5em;
 }
+.new_form input {
+  width: 120px;
+}
 @media only screen and (min-width: 600px) {
   .new_map {
     float: right;
@@ -26,5 +29,8 @@
   }
   .new_form .new_title {
     font-size: 2em;
+  }
+  .new_form input {
+    width: auto;
   }
 }

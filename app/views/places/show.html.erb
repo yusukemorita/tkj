@@ -19,16 +19,25 @@
 
     <p>
       <strong>その他</strong><br>
-      <%= @place.content %>
+      <% if @place.content.present? %>
+        <%= @place.content %>
+      <% else %>
+        未登録
+      <% end %>
     </p>
 
     <p>
-      <strong>緯度</strong><br>
-      <%= @place.latitude %>
+      <strong>住所</strong><br>
+      <% if @place.address.present? %>
+        <%= @place.address %>
+      <% else %>
+        未登録
+      <% end %>
     </p>
+
     <p>
-      <strong>経度</strong><br>
-      <%= @place.longitude %>
+      <strong>緯度・経度</strong><br>
+      <%= BigDecimal(@place.latitude).floor(6) %>... , <%= BigDecimal(@place.longitude).floor(6) %>...
     </p>
 
 	<%= link_to 'Edit', edit_place_path(@place), class:'btn btn-default' %>

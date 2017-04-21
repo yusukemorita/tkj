@@ -13,18 +13,18 @@
 
   <div class="container field name">
     <p>名前</p>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, placeholder:'必須（自動入力）' %>
     <p>ホームページ</p>
     <%= f.text_field :url %>
   </div>
   <div class="container field latitude">
-    <p>緯度</p>
-    <%= f.text_field :latitude %>
-    <p>経度</p>
-    <%= f.text_field :longitude %>
+    <p>住所</p>
+    <%= f.text_field :address, placeholder:'必須（自動入力）'%>
+    <p>経度・経度</p>
+    <%= f.text_field :longitude, disabled: true, placeholder:'必須（自動入力のみ）' %>
   </div>
   <div class="container field other">
-    <p>その他</p>
+    <p>その他(営業時間、混雑状況など)</p>
     <%= f.text_area :content %>
   </div>
   <div class="actions">

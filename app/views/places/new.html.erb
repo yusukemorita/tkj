@@ -6,7 +6,7 @@
   <%= render 'form' %>
 </div>
 
-<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+<input id="pac-input" class="controls" type="text" placeholder="SearchBox">
 <div id="map" class="new_map"></div>
 
 <script type="text/javascript">
@@ -14,28 +14,31 @@
     var map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 35.689791, lng: 139.692133},
       zoom: 13,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
     });
+
 		var infowindow = new google.maps.InfoWindow();
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-        var marker = new google.maps.Marker({
-          icon: '/assets/current_position.png',
-          position: pos,
-          map: map
-        });
-        map.setCenter(pos);
-      }, function() {
-        handleLocationError(true, infoWindow, map.getCenter());
-      });
-    } else {
-      // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, map.getCenter());
-    }
+
+    //現在地マーカー作成
+//    if (navigator.geolocation) {
+//      navigator.geolocation.getCurrentPosition(function(position) {
+//        var pos = {
+//          lat: position.coords.latitude,
+//          lng: position.coords.longitude
+//        };
+//        var marker = new google.maps.Marker({
+//          icon: '/assets/current_position.png',
+//          position: pos,
+//          map: map
+//        });
+//        map.setCenter(pos);
+//      }, function() {
+//        handleLocationError(true, infoWindow, map.getCenter());
+//      });
+//    } else {
+//      // Browser doesn't support Geolocation
+//      handleLocationError(false, infoWindow, map.getCenter());
+//    }
+
     // Create the search box and link it to the UI element.
     var input = document.getElementById('pac-input');
     var searchBox = new google.maps.places.SearchBox(input);

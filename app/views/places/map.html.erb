@@ -7,68 +7,135 @@
     <div class="map_news">
       <p class="wf-mplus1p">~新着情報~</p>
       <ul>
-        <li>04/18 卓球場登録ページに緯度経度の自動入力の説明追加</li>
         <li>04/18 各卓球場マーカーにGoogleマップへのリンク追加</li>
         <li>04/21 卓球場新規登録の際に「その他」欄が登録されないバグ修正</li>
+        <li>04/21 トップページのGoogleマップに検索ボックス追加</li>
       </ul>
     </div>
   </div>
 </div>
 
+<input id="pac-input" class="controls" type="text" placeholder="SearchBox" style="width:80%;">
 <div id="map" class="map_map"></div>
 
 <script type="text/javascript">
 
-	var map;
+  var tkj_places = <%=raw @places.to_json %>;
 
-  var places = <%=raw @places.to_json %>;
+  function initAutocomplete() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 35.689791, lng: 139.692133},
+      zoom: 11,
+    });
 
-	function initMap() {
-		map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat:35.690503, lng:139.700419} ,
-			zoom: 12
-		});
+		var infowindow = new google.maps.InfoWindow();
 
     //現在地マーカー作成
-		var infowindow = new google.maps.InfoWindow();
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
+//    if (navigator.geolocation) {
+//      navigator.geolocation.getCurrentPosition(function(position) {
+//        var pos = {
+//          lat: position.coords.latitude,
+//          lng: position.coords.longitude
+//        };
+//        var marker = new google.maps.Marker({
+//          icon: '/assets/current_position.png',
+//          position: pos,
+//          map: map
+//        });
+//        map.setCenter(pos);
+//      }, function() {
+//        handleLocationError(true, infoWindow, map.getCenter());
+//      });
+//    } else {
+//      // Browser doesn't support Geolocation
+//      handleLocationError(false, infoWindow, map.getCenter());
+//    }
+
+    // Create the search box and link it to the UI element.
+    var input = document.getElementById('pac-input');
+    var searchBox = new google.maps.places.SearchBox(input);
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+		var service = new google.maps.places.PlacesService(map);
+    var markers = [];
+    // Listen for the event fired when the user selects a prediction and retrieve
+    // more details for that place.
+    searchBox.addListener('places_changed', function() {
+      var places = searchBox.getPlaces();
+
+      console.log(places);
+
+      if (places.length == 0) {
+        return;
+      }
+
+      // Clear out the old markers.
+      markers.forEach(function(marker) {
+        marker.setMap(null);
+      });
+      markers = [];
+
+      // For each place, get the name and location.
+      var bounds = new google.maps.LatLngBounds();
+      places.forEach(function(place) {
+
+        // Create a marker for each place.
         var marker = new google.maps.Marker({
           icon: '/assets/current_position.png',
-          position: pos,
-          map: map
+          map: map,
+          title: place.name,
+          position: place.geometry.location,
+				  animation: google.maps.Animation.DROP
         });
-        map.setCenter(pos);
-      }, function() {
-        handleLocationError(true, infoWindow, map.getCenter());
-      });
-    } else {
-      // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, map.getCenter());
-    }
+				markers.push(marker);
 
-    for (i = 0; i < places.length; i++) {
+				google.maps.event.addListener(marker, 'click', function(evt) {
+          if (place.website != undefined) {
+            infowindow.setContent(
+              place.name + '<br>' +
+              '<a href=' + place.website + '>ホームページ</a>' + '<br>' +
+              place.geometry.location.lat().toString() + ',' + place.geometry.location.lng().toString());
+          } else {
+            infowindow.setContent(
+              place.name + '<br>' +
+              place.geometry.location.lat().toString() + ',' + place.geometry.location.lng().toString());
+          }
+          infowindow.open(map, marker);
+          $('#place_latitude').val(place.geometry.location.lat().toString());
+          $('#place_longitude').val(place.geometry.location.lng().toString());
+          $('#place_title').val(place.name);
+          $('#place_url').val(place.website);
+        });
+        if (place.geometry.viewport) {
+          // Only geocodes have viewport.
+          bounds.union(place.geometry.viewport);
+        } else {
+          bounds.extend(place.geometry.location);
+        }
+      });
+      map.fitBounds(bounds);
+    });
+
+//ここからは元からあったやつ
+    for (i = 0; i < tkj_places.length; i++) {
       var marker = new google.maps.Marker({
-        position: {lat: eval(places[i].latitude), lng: eval(places[i].longitude)},
+        position: {lat: eval(tkj_places[i].latitude), lng: eval(tkj_places[i].longitude)},
         map: map,
-        title: places[i].title,
+        title: tkj_places[i].title,
 				animation: google.maps.Animation.DROP
       });
 			google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-          infowindow.setContent('<div id="content">' + places[i].title + '<br>' + '<a href = /places/' + places[i].id + '>詳細</a>' + '<br>' + '<a href = https://google.com/maps/place/' + places[i].title + '>Googleマップで開く</a>' + '</div>');
+          infowindow.setContent('<div id="content">' + tkj_places[i].title + '<br>' + '<a href = /places/' + tkj_places[i].id + '>詳細</a>' + '<br>' + '<a href = https://google.com/maps/place/' + tkj_places[i].title + '>Googleマップで開く</a>' + '</div>');
           infowindow.open(map, marker);
         }
       })(marker, i));
 		}
+
+
   }
 
 </script>
 
 <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1UBETjFq1eApVpLAX-JdAz3tsHf7Bpsc&callback=initMap">
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1UBETjFq1eApVpLAX-JdAz3tsHf7Bpsc&libraries=places&callback=initAutocomplete">
 </script>

@@ -20,3 +20,7 @@
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+#以下は自分で追加したもの
+#ignore db/schema.rb
+/db/schema.rb

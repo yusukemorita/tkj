@@ -15,7 +15,7 @@
   </div>
 </div>
 
-<input id="pac-input" class="controls" type="text" placeholder="SearchBox" style="width:80%;">
+<input id="pac-input" class="controls" type="text" placeholder="SearchBox" style="width:60%;">
 <div id="map" class="map_map"></div>
 
 <script type="text/javascript">
@@ -23,14 +23,17 @@
   var tkj_places = <%=raw @places.to_json %>;
 
   function initAutocomplete() {
+
+		//マップ作成
     var map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 35.689791, lng: 139.692133},
       zoom: 11,
+			mapTypeId: 'roadmap'
     });
 
+		//各マーカーのinfowindow定義
 		var infowindow = new google.maps.InfoWindow();
-
-    //現在地マーカー作成
+//現在地マーカー作成
 //    if (navigator.geolocation) {
 //      navigator.geolocation.getCurrentPosition(function(position) {
 //        var pos = {
@@ -51,19 +54,24 @@
 //      handleLocationError(false, infoWindow, map.getCenter());
 //    }
 
-    // Create the search box and link it to the UI element.
+    //検索ボックス作成(Create the search box and link it to the UI element.)
     var input = document.getElementById('pac-input');
     var searchBox = new google.maps.places.SearchBox(input);
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 		var service = new google.maps.places.PlacesService(map);
     var markers = [];
+
+
+		// Bias the SearchBox results towards current map's viewport.
+    map.addListener('bounds_changed', function() {
+      searchBox.setBounds(map.getBounds());
+    });
+
     // Listen for the event fired when the user selects a prediction and retrieve
     // more details for that place.
+		//検索を待つ
     searchBox.addListener('places_changed', function() {
       var places = searchBox.getPlaces();
-
-      console.log(places);
-
       if (places.length == 0) {
         return;
       }
@@ -76,35 +84,32 @@
 
       // For each place, get the name and location.
       var bounds = new google.maps.LatLngBounds();
+      map.fitBounds(bounds);
       places.forEach(function(place) {
-
         // Create a marker for each place.
-        var marker = new google.maps.Marker({
+        markers.push(new google.maps.Marker({
           icon: '/assets/current_position.png',
           map: map,
           title: place.name,
           position: place.geometry.location,
 				  animation: google.maps.Animation.DROP
-        });
-				markers.push(marker);
+        }));
 
-				google.maps.event.addListener(marker, 'click', function(evt) {
-          if (place.website != undefined) {
-            infowindow.setContent(
-              place.name + '<br>' +
-              '<a href=' + place.website + '>ホームページ</a>' + '<br>' +
-              place.geometry.location.lat().toString() + ',' + place.geometry.location.lng().toString());
-          } else {
-            infowindow.setContent(
-              place.name + '<br>' +
-              place.geometry.location.lat().toString() + ',' + place.geometry.location.lng().toString());
-          }
-          infowindow.open(map, marker);
-          $('#place_latitude').val(place.geometry.location.lat().toString());
-          $('#place_longitude').val(place.geometry.location.lng().toString());
-          $('#place_title').val(place.name);
-          $('#place_url').val(place.website);
-        });
+				//検索された場所にinfowindow設置
+//				google.maps.event.addListener(marker, 'click', function(evt) {
+//          if (place.website != undefined) {
+//            infowindow.setContent(
+//              place.name + '<br>' +
+//              '<a href=' + place.website + '>ホームページ</a>' + '<br>' +
+//              place.geometry.location.lat().toString() + ',' + place.geometry.location.lng().toString());
+//          } else {
+//            infowindow.setContent(
+//              place.name + '<br>' +
+//              place.geometry.location.lat().toString() + ',' + place.geometry.location.lng().toString());
+//          }
+//          infowindow.open(map, marker);
+//        });
+
         if (place.geometry.viewport) {
           // Only geocodes have viewport.
           bounds.union(place.geometry.viewport);
@@ -115,7 +120,7 @@
       map.fitBounds(bounds);
     });
 
-//ここからは元からあったやつ
+		//ここからは元からあったやつ
     for (i = 0; i < tkj_places.length; i++) {
       var marker = new google.maps.Marker({
         position: {lat: eval(tkj_places[i].latitude), lng: eval(tkj_places[i].longitude)},
@@ -127,11 +132,10 @@
         return function() {
           infowindow.setContent('<div id="content">' + tkj_places[i].title + '<br>' + '<a href = /places/' + tkj_places[i].id + '>詳細</a>' + '<br>' + '<a href = https://google.com/maps/place/' + tkj_places[i].title + '>Googleマップで開く</a>' + '</div>');
           infowindow.open(map, marker);
-        }
+        };
       })(marker, i));
 		}
-
-
+    setTimeout(function(){google.maps.event.trigger(map, 'resize');}, 1000);
   }
 
 </script>

@@ -27,9 +27,6 @@
           height: $('.new_form').height()
         });
       } else {
-        $('.actions').css({
-          left: 0.5 * ($('.yield_container').width() - $('.actions').width())
-        });
         $('.new_form input').css({
           width: $('.yield_container').width() * 0.43
         });

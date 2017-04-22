@@ -100,10 +100,6 @@
               place.geometry.location.lat().toString() + ',' + place.geometry.location.lng().toString());
           }
           infowindow.open(map, marker);
-          $('#place_latitude').val(place.geometry.location.lat().toString());
-          $('#place_longitude').val(place.geometry.location.lng().toString());
-          $('#place_title').val(place.name);
-          $('#place_url').val(place.website);
         });
         if (place.geometry.viewport) {
           // Only geocodes have viewport.
@@ -130,8 +126,6 @@
         }
       })(marker, i));
 		}
-
-
   }
 
 </script>

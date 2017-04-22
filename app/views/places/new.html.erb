@@ -74,8 +74,8 @@
           position: place.geometry.location
         });
 				markers.push(marker);
+
 				google.maps.event.addListener(marker, 'click', function(evt) {
-          console.log(place.formatted_address);
           if (place.website != undefined) {
             infowindow.setContent(
               place.name + '<br>' +

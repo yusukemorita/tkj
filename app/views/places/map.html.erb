@@ -84,7 +84,6 @@
 
       // For each place, get the name and location.
       var bounds = new google.maps.LatLngBounds();
-      console.log('fitbounds');
       map.fitBounds(bounds);
       places.forEach(function(place) {
         // Create a marker for each place.
@@ -114,14 +113,11 @@
 				//ここかな？？？
         if (place.geometry.viewport) {
           // Only geocodes have viewport.
-					console.log('bounds union');
           bounds.union(place.geometry.viewport);
         } else {
-					console.log('bounds extend');
           bounds.extend(place.geometry.location);
         }
       });
-      console.log('fitbounds');
       map.fitBounds(bounds);
     });
 

@@ -37,7 +37,7 @@
 
     <p>
       <strong>緯度・経度</strong><br>
-      <%= BigDecimal(@place.latitude).floor(6) %>... , <%= BigDecimal(@place.longitude).floor(6) %>...
+      <%= @place.latitude.round(6)  %>... , <%= @place.longitude.round(6) %>...
     </p>
 
 	<%= link_to 'Edit', edit_place_path(@place), class:'btn btn-default' %>

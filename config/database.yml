@@ -5,7 +5,7 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: sqlite3
+  adapter: mysql2
   pool: 5
   timeout: 5000
 
@@ -24,10 +24,11 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: db/test.db
 
 production:
   <<: *default
-  database: tkj_production
+  encoding: utf8
+  database: db/production.db
   username: root
   password:

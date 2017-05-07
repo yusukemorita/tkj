@@ -1,7 +1,7 @@
 class ChangeLatlngFormatInPlaces < ActiveRecord::Migration
   def up
-    change_column :places, :latitude, :decimal
-    change_column :places, :longitude, :decimal
+    change_column :places, :latitude, :decimal, :precision => 25, :scale => 20
+    change_column :places, :longitude, :decimal, :precision => 25, :scale => 20
   end
 
   def down

@@ -2,35 +2,30 @@
   width: 100%;
   position: fixed;
 }
-.new_title {
-  color: white;
-}
-.new_form p {
-  color: white;
-}
-.new_form .warning {
-  color: red;
-}
-.new_form .new_title {
-  font-size: 1.5em;
-}
 .popover-title {
   text-align: center;
 }
 .popover.right > .arrow {
-  visibility: hidden;
+  display: none;
+}
+@media only screen and (max-width: 600px) {
+  .new_place {
+    margin-top: 5px;
+  }
+  .new_place .input-group {
+    margin-bottom: 5px;
+  }
 }
 @media only screen and (min-width: 600px) {
   .new_map {
     float: right;
-    margin: 5% 0;
   }
-  .new_form {
+  .new_place {
+    display: none;
     width: 30%;
-    margin: 30px;
     float: left;
   }
-  .new_form .new_title {
-    font-size: 2em;
+  .new_place .input-group {
+    margin-bottom: 15px;
   }
 }

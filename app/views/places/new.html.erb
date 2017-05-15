@@ -1,14 +1,11 @@
 <%= javascript_include_tag "/assets/javascripts/new" %>
 
-<div class='new_form'>
-  <p class='new_title wf-mplus1p'>新しい卓球場を登録</p>
-  <%= render 'form' %>
-</div>
-
-<a data-placement="right" data-toggle="popover" data-html="true" title="自動入力" style="display:none;" class="tip_popover" data-content="<strong>名前</strong>、<strong>住所</strong>、<strong>緯度・経度</strong>はGoogleマップで検索したアイコンをクリックすると自動入力されます。<br>クリックするとこのポップアップは消えます。"></a>
-
 <input id="pac-input" class="controls" type="text" placeholder="卓球場を検索">
 <div id="map" class="new_map"></div>
+
+<%= render 'form' %>
+
+<a data-placement="right" data-toggle="popover" data-html="true" title="1.卓球場をGoogleマップで検索" style="display:none; margin-left:0;" class="step1_popover" data-content="Googleマップで新しく登録したい卓球場を検索し、赤いマーカーをクリックしてください。"></a>
 
 <script type="text/javascript">
   function initAutocomplete() {
@@ -73,24 +70,30 @@
         });
 				markers.push(marker);
 
+        //マーカー上にinfowindow表示
+        infowindow.setContent(
+          place.name + '<br>' +
+          'マーカーをクリック！');
+        infowindow.open(map, marker);
+
 				google.maps.event.addListener(marker, 'click', function(evt) {
-          if (place.website != undefined) {
-            infowindow.setContent(
-              place.name + '<br>' +
-              '<a href=' + place.website + '>ホームページ</a>' + '<br>' +
-              place.geometry.location.lat().toString() + ',' + place.geometry.location.lng().toString());
-          } else {
-            infowindow.setContent(
-              place.name + '<br>' +
-              place.geometry.location.lat().toString() + ',' + place.geometry.location.lng().toString());
-          }
-          infowindow.open(map, marker);
-          $('#place_address').val(place.formatted_address);
-          $('#place_latitude').val(place.geometry.location.lat().toString());
-          $('#place_longitude').val(place.geometry.location.lng().toString());
-          $('.warning').replaceWith('入力完了！');
-          $('#place_title').val(place.name);
-          $('#place_url').val(place.website);
+          if ($(window).width() > 600){
+            $('.new_place').show();
+            $('.new_map').css({
+              width: 60 + '%'
+            });
+          };
+          var info = []; //info = [address, lat, long, name, url]
+          info[0] = place.formatted_address;
+          info[1] = place.geometry.location.lat().toString();
+          info[2] = place.geometry.location.lng().toString();
+          info[3] = place.name;
+          info[4] = place.website;
+          $("#address_input").val(place.formatted_address);
+          $("#lat_input").val(place.geometry.location.lat().toString());
+          $("#long_input").val(place.geometry.location.lng().toString());
+          $("#name_input").val(place.name);
+          $("#url_input").val(place.website);
         });
         if (place.geometry.viewport) {
           // Only geocodes have viewport.

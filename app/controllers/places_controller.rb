@@ -1,6 +1,8 @@
 class PlacesController < ApplicationController
   before_action :set_place, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:edit, :update, :destroy]
+  if Rails.env == 'production'
+    before_action :authenticate_user!, only: [:edit, :update, :destroy]
+  end
 
   # GET /places
   # GET /places.json

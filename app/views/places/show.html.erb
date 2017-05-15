@@ -35,11 +35,6 @@
       <% end %>
     </p>
 
-    <p>
-      <strong>緯度・経度</strong><br>
-      <%= @place.latitude.round(6)  %>... , <%= @place.longitude.round(6) %>...
-    </p>
-
 	<%= link_to 'Edit', edit_place_path(@place), class:'btn btn-default' %>
 	<%= link_to 'Back', places_path, class:'btn btn-default'%>
   </div>

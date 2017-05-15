@@ -10,42 +10,37 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="container field name">
-    <p>名前</p>
-    <%= f.text_field :title, placeholder:'必須（自動入力）' %>
-    <p>ホームページ</p>
-    <%= f.text_field :url %>
+  <div class="input-group" id="name_div">
+    <span class="input-group-addon">名前</span>
+    <%= f.text_field :title, placeholder:'必須（自動入力）', class: 'form-control', id:'name_input' %>
   </div>
-  <div class="container field latitude">
-    <p>住所</p>
-    <%= f.text_field :address, placeholder:'必須（自動入力）'%>
-    <p>経度・経度</p>
-    <%= f.hidden_field :longitude %>
-    <%= f.hidden_field :latitude %>
-    <p class="warning">　Googleマップから<br>自動登録してください</p>
+  <div class="input-group" id="address_div">
+    <span class="input-group-addon">住所</span>
+    <%= f.text_field :address, placeholder:'必須', class: 'form-control', id:'address_input' %>
   </div>
-  <div class="container field other">
-    <p>その他(営業時間、混雑状況など)</p>
-    <%= f.text_area :content %>
+  <div class="input-group" id="url_div">
+    <span class="input-group-addon">ホームページ</span>
+    <%= f.text_field :url, placeholder:'任意', class: 'form-control', id:'url_input' %>
   </div>
-  <div class="actions">
-    <%= f.submit class:"btn default-btn" %>
+  <div class="input-group" id="other_div">
+    <span class="input-group-addon">その他</span>
+    <%= f.text_area :content, placeholder:'任意　混雑状況、開館時間など', class: 'form-control', rows:5, id:'other_input' %>
+  </div>
+  <%= f.hidden_field :longitude, id:'long_input' %>
+  <%= f.hidden_field :latitude , id:'lat_input' %>
+  <div class="actions" id="submit_btn">
+    <%= f.submit "登録", class:"btn btn-info col-md-offset-5" %>
   </div>
 <% end %>
 
 <head>
   <style>
-    @media only screen and (max-width: 600px) {
-      .name, .other {
-        float: left;
+    @media only screen and (min-width: 600px) {
+      .edit_place {
+        width: 30%;
       }
-      .latitude .actions {
-        float: right;
-      }
-      .actions {
-        margin-top: 50px;
-        margin-left: 50px;
+      .edit_place .input-group {
+        margin-bottom: 15px;
       }
     }
  </style>

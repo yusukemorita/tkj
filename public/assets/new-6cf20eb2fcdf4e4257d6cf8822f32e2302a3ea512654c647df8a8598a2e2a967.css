@@ -1,0 +1,31 @@
+.new_map {
+  width: 100%;
+  position: fixed;
+}
+.popover-title {
+  text-align: center;
+}
+.popover.right > .arrow {
+  display: none;
+}
+@media only screen and (max-width: 600px) {
+  .new_place {
+    margin-top: 5px;
+  }
+  .new_place .input-group {
+    margin-bottom: 5px;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .new_map {
+    float: right;
+  }
+  .new_place {
+    display: none;
+    width: 30%;
+    float: left;
+  }
+  .new_place .input-group {
+    margin-bottom: 15px;
+  }
+}

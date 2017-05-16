@@ -29,7 +29,5 @@ test:
 production:
   <<: *default
   database: db/production.db
-  encoding: utf8
   username: root
   password:
-  host: localhost

@@ -1,9 +1,16 @@
 .show_map {
   float: right;
+  width: 60%;
 }
 .show_text p {
   color: white;
 }
 .show_text {
   float: left;
+}
+/* mobile */
+@media only screen and (max-width: 600px) {
+  .show_map {
+    width: 100%;
+  }
 }

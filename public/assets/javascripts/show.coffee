@@ -1,23 +1,21 @@
 $(document).ready ->
   app.initialize()
-  console.log 'public map.coffee called'
+  console.log 'public show.coffee called'
 
 app =
   initialize: ->
-    $('.footer_blank_div').css
-      display: 'none'
     available_height = $(window).height() - $('.nav_bar').height() - $('.footer').height()
-    map_width = window_width * 0.6
     if $(window).width() > 600
-      $('.map_map').css
+      $('.show_map').css
         height: available_height * 0.8
         marginTop: available_height * 0.1
         marginBottom: available_height * 0.1
-      $('.parent').css
+      $('.show_text').css
         marginTop: available_height * 0.1
         marginBottom: available_height * 0.1
-        height: available_height * 0.8
         marginRight:0
     else
-      $('.map_map').css
-        height: $(window).height() -  $('.parent').offset().top - $('.parent').outerHeight(true)
+      $('.show_map').css
+        height: $(window).height() -  $('.show_text').offset().top - $('.show_text').outerHeight(true) - 30
+        marginTop: 15
+        marginBottom: 15

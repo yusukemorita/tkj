@@ -1,48 +1,45 @@
-<p id="notice" style="color:white"><%= notice %></p>
+<%= javascript_include_tag "/assets/javascripts/show" %>
+<div id="notice" style="color:white"><%= notice %></div>
 
-<div class="container">
+<div class="show_text">
+  <p>
+    <strong>卓球場名</strong><br>
+    <%= @place.title %>
+  </p>
 
-  <div class="show_text">
-    <p>
-      <strong>卓球場名</strong><br>
-      <%= @place.title %>
-    </p>
+  <p>
+    <strong>ホームページ</strong><br>
+    <% if @place.url.size > 0 %>
+      <a href=<%= @place.url %> style="color:white"><%= @place.url %></a>
+    <% else %>
+      未登録
+    <% end %>
+  </p>
 
-    <p>
-      <strong>ホームページ</strong><br>
-      <% if @place.url.size > 0 %>
-        <a href=<%= @place.url %> style="color:white"><%= @place.url %></a>
-      <% else %>
-        未登録
-      <% end %>
-    </p>
+  <p>
+    <strong>住所</strong><br>
+    <% if @place.address.present? %>
+      <%= @place.address %><br>
+      <button type="button" class="btn btn-sm btn-success" href=https://google.com/maps/place/' + <%= @place.address %>>Googleマップで開く</button>
+    <% else %>
+      未登録
+    <% end %>
+  </p>
 
-    <p>
-      <strong>その他</strong><br>
-      <% if @place.content.present? %>
-        <%= @place.content %>
-      <% else %>
-        未登録
-      <% end %>
-    </p>
+  <p>
+    <strong>その他</strong><br>
+    <% if @place.content.present? %>
+      <%= @place.content %>
+    <% else %>
+      未登録
+    <% end %>
+  </p>
 
-    <p>
-      <strong>住所</strong><br>
-      <% if @place.address.present? %>
-        <%= @place.address %>
-      <% else %>
-        未登録
-      <% end %>
-    </p>
-
-	<%= link_to 'Edit', edit_place_path(@place), class:'btn btn-default' %>
-	<%= link_to 'Back', places_path, class:'btn btn-default'%>
-  </div>
-
-  <div class="show_map" id="map" style="width:620px; height:400px"></div>
-  <br>
-
+<%= link_to '編集', edit_place_path(@place), class:'btn btn-info' %>
+<%= link_to '戻る', places_path, class:'btn btn-info'%>
 </div>
+
+<div class="show_map" id="map"></div>
 
 <script type="text/javascript">
 
@@ -66,6 +63,6 @@
 
 </script>
 
-<script async defer 
+<script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1UBETjFq1eApVpLAX-JdAz3tsHf7Bpsc&callback=initMap">
 </script>

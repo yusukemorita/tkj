@@ -2,14 +2,13 @@
 
 <div class="parent">
   <div class="child">
-    <p class="wf-mplus1p main_text">もう、練習場所に困らない</p>
-    <p class="wf-mplus1p sub_text">全国の卓球場情報を集約</p>
+    <p class="wf-mplus1p main_text">練習場所がない！</p>
+    <p class="wf-mplus1p sub_text">そんな人のために、全国の卓球場情報を集約</p>
     <div class="map_news">
       <p class="wf-mplus1p">~新着情報~</p>
       <ul>
-        <li>04/18 各卓球場マーカーにGoogleマップへのリンク追加</li>
-        <li>04/21 卓球場新規登録の際に「その他」欄が登録されないバグ修正</li>
         <li>04/21 トップページのGoogleマップに検索ボックス追加</li>
+        <li>05/17 登録卓球場数４５０件突破！</li>
       </ul>
     </div>
   </div>
@@ -26,8 +25,8 @@
 
 		//マップ作成
     var map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 35.689791, lng: 139.692133},
-      zoom: 11,
+      center: {lat: 38.5, lng: 138},
+      zoom: 5,
 			mapTypeId: 'roadmap'
     });
 

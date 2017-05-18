@@ -1,5 +1,6 @@
 .show_map {
   float: right;
+  width: 60%;
 }
 .show_text p {
   color: white;
@@ -7,10 +8,9 @@
 .show_text {
   float: left;
 }
-/* desktop */
-@media only screen and (min-width: 600px) {
-  #map {
-    width: 50%;
-    height: 40%;
+/* mobile */
+@media only screen and (max-width: 600px) {
+  .show_map {
+    width: 100%;
   }
 }

@@ -7,3 +7,10 @@
 .show_text {
   float: left;
 }
+/* desktop */
+@media only screen and (min-width: 600px) {
+  #map {
+    width: 50%;
+    height: 40%;
+  }
+}

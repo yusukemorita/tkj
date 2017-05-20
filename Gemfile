@@ -37,6 +37,7 @@ gem 'unicorn'
 ##########################################自分で追加したgem
 gem 'hirb', '~> 0.7.3'
 gem 'bootstrap-sass'
+gem 'markerclustererplus-rails'
 
 #ユーザー機能
 gem 'devise', '3.5.1'

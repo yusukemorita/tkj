@@ -1,4 +1,66 @@
-.place_list a,
-.place_list a:visited {
-  color: white;
+.index_title {
+  text-align: center;
+}
+.unavailable {
+  color: grey;
+}
+/* desktop */
+@media only screen and (min-width: 600px) {
+  .place_grid {
+    float: left;
+    width: 29%;
+    height: 150px;
+    margin: 2%;
+    padding: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    border-radius: 5px;
+    border: grey;
+    background: white;
+    transition: 0.5s;
+    position: relative;
+  }
+  .place_grid .url_p :hover {
+    background-color: #B4B4B4;
+  }
+  .place_grid .index_title {
+    text-align: center;
+  }
+  .place_grid .show_btn {
+    bottom: 8px;
+    position: absolute;
+  }
+  .place_grid .url_btn {
+    display: none;
+  }
+}
+/* mobile */
+@media only screen and (max-width: 600px) {
+  .place_grid {
+    float: left;
+    width: 46%;
+    height: 160px;
+    margin: 2%;
+    padding: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    border-radius: 5px;
+    border: grey;
+    background: white;
+    transition: 0.5s;
+    position: relative;
+  }
+  .place_grid .url_p {
+    display: none;
+  }
+  .place_grid .index_title {
+    text-align: center;
+  }
+  .place_grid .show_btn ,
+  .place_grid .url_btn {
+    bottom: 8px;
+    position: absolute;
+    float: left;
+  }
+  .place_grid .url_btn {
+    left: 70px;
+  }
 }

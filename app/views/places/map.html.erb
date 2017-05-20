@@ -75,40 +75,10 @@
         return;
       }
 
-      // Clear out the old markers.
-      markers.forEach(function(marker) {
-        marker.setMap(null);
-      });
-      markers = [];
-
       // For each place, get the name and location.
       var bounds = new google.maps.LatLngBounds();
       map.fitBounds(bounds);
       places.forEach(function(place) {
-        // Create a marker for each place.
-        markers.push(new google.maps.Marker({
-          icon: '/assets/current_position.png',
-          map: map,
-          title: place.name,
-          position: place.geometry.location,
-				  animation: google.maps.Animation.DROP
-        }));
-
-				//検索された場所にinfowindow設置
-//				google.maps.event.addListener(marker, 'click', function(evt) {
-//          if (place.website != undefined) {
-//            infowindow.setContent(
-//              place.name + '<br>' +
-//              '<a href=' + place.website + '>ホームページ</a>' + '<br>' +
-//              place.geometry.location.lat().toString() + ',' + place.geometry.location.lng().toString());
-//          } else {
-//            infowindow.setContent(
-//              place.name + '<br>' +
-//              place.geometry.location.lat().toString() + ',' + place.geometry.location.lng().toString());
-//          }
-//          infowindow.open(map, marker);
-//        });
-
         if (place.geometry.viewport) {
           // Only geocodes have viewport.
           bounds.union(place.geometry.viewport);
@@ -119,10 +89,11 @@
       map.fitBounds(bounds);
     });
 
-		//ここからは元からあったやつ
+    var markers = [];
     for (i = 0; i < tkj_places.length; i++) {
-      var marker = new google.maps.Marker({
-        position: {lat: eval(tkj_places[i].latitude), lng: eval(tkj_places[i].longitude)},
+      var latLng = new google.maps.LatLng(tkj_places[i].latitude, tkj_places[i].longitude);
+      var marker = new google.maps.Marker({'position': latLng});var marker = new google.maps.Marker({
+        position: latLng,
         map: map,
         title: tkj_places[i].title,
 				animation: google.maps.Animation.DROP
@@ -133,7 +104,10 @@
           infowindow.open(map, marker);
         };
       })(marker, i));
+      markers.push(marker);
 		}
+    var mcOptions = {maxZoom: 10, imagePath: '/assets/images/m', minimumClusterSize: 4};
+    var markerCluster = new MarkerClusterer(map, markers, mcOptions);
     setTimeout(function(){google.maps.event.trigger(map, 'resize');}, 1000);
   }
 

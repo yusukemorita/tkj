@@ -23,10 +23,13 @@
           marginRight: 0
         });
       } else {
-        return $('.show_map').css({
+        $('.show_map').css({
           height: $(window).height() - $('.show_text').offset().top - $('.show_text').outerHeight(true) - 30,
           marginTop: 15,
           marginBottom: 15
+        });
+        return $('.url_div').css({
+          width: $('.show_map').width()
         });
       }
     }

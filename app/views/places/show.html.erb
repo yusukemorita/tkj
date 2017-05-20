@@ -2,38 +2,47 @@
 <div id="notice" style="color:white"><%= notice %></div>
 
 <div class="show_text">
-  <p>
+
+  <div>
     <strong>卓球場名</strong><br>
-    <%= @place.title %>
-  </p>
+    <p>
+      <%= @place.title %>
+    </p>
+  </div>
 
-  <p>
+  <div class='url_div'>
     <strong>ホームページ</strong><br>
-    <% if @place.url.size > 0 %>
-      <a href=<%= @place.url %> style="color:white"><%= @place.url %></a>
-    <% else %>
-      未登録
-    <% end %>
-  </p>
+    <p class='url_p'>
+      <% if @place.url.size > 0 %>
+        <a href=<%= @place.url %> style="color:white"><%= @place.url %></a>
+      <% else %>
+        未登録
+      <% end %>
+    </p>
+  </div>
 
-  <p>
+  <div>
     <strong>住所</strong><br>
-    <% if @place.address.present? %>
-      <%= @place.address %><br>
-      <button type="button" class="btn btn-sm btn-success" href=https://google.com/maps/place/' + <%= @place.address %>>Googleマップで開く</button>
-    <% else %>
-      未登録
-    <% end %>
-  </p>
+    <p>
+      <% if @place.address.present? %>
+        <%= @place.address %><br>
+        <button type="button" class="btn btn-sm btn-success" href=https://google.com/maps/place/' + <%= @place.address %>>Googleマップで開く</button>
+      <% else %>
+        未登録
+      <% end %>
+    </p>
+  </div>
 
-  <p>
+  <div>
     <strong>その他</strong><br>
-    <% if @place.content.present? %>
-      <%= @place.content %>
-    <% else %>
-      未登録
-    <% end %>
-  </p>
+    <p>
+      <% if @place.content.present? %>
+        <%= @place.content %>
+      <% else %>
+        未登録
+      <% end %>
+    </p>
+  </div>
 
 <%= link_to '編集', edit_place_path(@place), class:'btn btn-info' %>
 <%= link_to '戻る', places_path, class:'btn btn-info'%>

@@ -5,6 +5,12 @@
 .show_text p {
   color: white;
 }
+.show_text .url_div p.url_p {
+  width: 300px;
+}
+.show_text p a {
+  word-wrap: break-word;
+}
 .show_text {
   float: left;
 }

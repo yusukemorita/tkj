@@ -36,9 +36,6 @@ body {
 /////////////nav_bar/////////////////
 
 //for mobile//
-.yield_container {
-  margin-top: 11%;
-}
 .nav_bar {
   position: fixed;
   z-index: 9999;
@@ -110,6 +107,9 @@ body {
 }
 //for desktop//
 @media only screen and (min-width: 600px) {
+  .yield_container {
+    margin-bottom: 50px;
+  }
   .footer{
     display: inline-block;
     position: fixed;
@@ -117,10 +117,6 @@ body {
     height: 50px;
     background-color: #E8E8E8;
     bottom: 0px;
-  }
-  .yield_container {
-    margin-top: 80px;
-    margin-bottom: 50px;
   }
   .nav_bar {
     left: 0px;

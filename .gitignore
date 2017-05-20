@@ -24,3 +24,4 @@
 #以下は自分で追加したもの
 #ignore db/schema.rb
 /db/schema.rb
+/Gemfile.lock

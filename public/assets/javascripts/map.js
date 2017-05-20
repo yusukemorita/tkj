@@ -9,14 +9,11 @@
 
   app = {
     initialize: function() {
-      var available_height, def_margin, map_width, window_width;
+      var available_height;
       $('.footer_blank_div').css({
         display: 'none'
       });
-      available_height = $(window).height() - $('.nav_bar').height() - $('.footer').height();
-      window_width = $('.yield_container').width();
-      map_width = window_width * 0.6;
-      def_margin = available_height * 0.1;
+      available_height = $(window).height() - $('.navbar').height() - $('.footer').height();
       if ($(window).width() > 600) {
         $('.map_map').css({
           height: available_height * 0.8,

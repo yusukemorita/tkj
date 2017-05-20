@@ -15,7 +15,7 @@
         return $('.step1_popover').popover('hide');
       });
       if ($(window).width() > 600) {
-        available_height = $(window).outerHeight(true) - $('.nav_bar').outerHeight() - $('.footer').height();
+        available_height = $(window).outerHeight(true) - $('.navbar').outerHeight() - $('.footer').height();
         $('.popover').css({
           top: available_height * 0.5,
           left: available_height * 0.3

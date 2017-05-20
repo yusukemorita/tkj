@@ -6,8 +6,7 @@ app =
   initialize: ->
     $('.footer_blank_div').css
       display: 'none'
-    available_height = $(window).height() - $('.nav_bar').height() - $('.footer').height()
-    map_width = window_width * 0.6
+    available_height = $(window).height() - $('.navbar').height() - $('.footer').height()
     if $(window).width() > 600
       $('.map_map').css
         height: available_height * 0.8

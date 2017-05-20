@@ -12,7 +12,7 @@ app =
 
     #デスクトップ表示
     if $(window).width() > 600
-      available_height = $(window).outerHeight(true) - $('.nav_bar').outerHeight() - $('.footer').height()
+      available_height = $(window).outerHeight(true) - $('.navbar').outerHeight() - $('.footer').height()
 
       #ポップアップ
       $('.popover').css

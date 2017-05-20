@@ -4,7 +4,7 @@ $(document).ready ->
 
 app =
   initialize: ->
-    available_height = $(window).height() - $('.nav_bar').height() - $('.footer').height()
+    available_height = $(window).height() - $('.navbar').height() - $('.footer').height()
     if $(window).width() > 600
       $('.show_map').css
         height: available_height * 0.8

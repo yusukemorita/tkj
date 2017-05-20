@@ -8,4 +8,4 @@ app =
       console.log 'clicked'
       $('#dropdown').toggle()
     $('.yield_container').css
-      marginTop: $('.nav_bar').height() + 10
+      marginTop: $('.navbar').height()

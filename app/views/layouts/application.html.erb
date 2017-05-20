@@ -9,27 +9,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+  <!-- Navigation -->
+  <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header page-scroll">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>MENU <%= image_tag("menu.png", :class => "menu_icon") %></i>
+        </button>
+        <a class="li_head wf-mplus1p navbar-brand page-scroll" href="/">卓球マップ</a>
+      </div>
 
-  <div class="container">
-    <div class="nav_bar">
-      <ul>
-        <li class="li_head nav_list wf-mplus1p" style="font-weight: 600"><a href="/">卓球マップ</a></li>
-        <li class="li_sub nav_list wf-mplus1p"><%= link_to '一覧', places_path %></li>
-        <li class="li_sub nav_list wf-mplus1p"><%= link_to '卓球場を登録', new_place_path %></li>
-        <li class="li_sub nav_list wf-mplus1p"><%= link_to '当サイトについて', about_path %></li>
-        <li class="li_sub nav_list li_right wf-mplus1p"><%= link_to '管理者ログイン', new_user_registration_path %></li>
-        <li class="li_icon" ><%= image_tag("menu.png", :class => "menu_icon") %></li>
-      </ul>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-left">
+          <li><a class="page-scroll wf-mplus1p" href="/places">卓球場一覧</a></li>
+          <li><a class="page-scroll wf-mplus1p" href="/places/new">卓球場を登録</a></li>
+          <li><a class="page-scroll wf-mplus1p" href="/about">当サイトについて</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a class="page-scroll" href="/users/sign_in">管理者ログイン</a></li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
     </div>
-  </div>
+    <!-- /.container-fluid -->
+  </nav>
 
-  <div id="dropdown" class="dropdown">
-    <p class="wf-mplus1p"><%= link_to '一覧', places_path %></p><br>
-    <p class="wf-mplus1p"><%= link_to '卓球場を新規登録', new_place_path %></p><br>
-    <p class="li_sub nav_list wf-mplus1p"><%= link_to '当サイトについて', about_path %></p>
-    <p class="wf-mplus1p"><%= link_to '管理者ログイン', new_user_registration_path %></p>
-  </div>
-
+<!--
+  <li class="li_icon" ><%= image_tag("menu.png", :class => "menu_icon") %></li>
+-->
   <div class="container yield_container">
     <%= yield %>
   </div>

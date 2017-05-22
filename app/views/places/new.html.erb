@@ -1,17 +1,19 @@
 <%= javascript_include_tag "/assets/javascripts/new" %>
 
-<input id="pac-input" class="controls" type="text" placeholder="卓球場を検索">
+<input id="pac-input" style="width:50%;" class="controls" type="text" placeholder="卓球場を検索">
 <div id="map" class="new_map"></div>
 
 <%= render 'form' %>
 
-<a data-placement="right" data-toggle="popover" data-html="true" title="1.卓球場をGoogleマップで検索" style="display:none; margin-left:0;" class="step1_popover" data-content="Googleマップで新しく登録したい卓球場を検索し、赤いマーカーをクリックしてください。"></a>
+<a data-placement="right" data-toggle="popover" data-html="true" title="1.卓球場をGoogleマップで検索" style="display:none; margin-left:0;" class="step1_popover" data-content="Googleマップで新しく登録したい卓球場を検索し、赤いマーカーをクリックしてください。<br>このポップアップはクリックすると消えます。"></a>
 
 <script type="text/javascript">
   function initAutocomplete() {
     var map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 35.689791, lng: 139.692133},
       zoom: 13,
+      mapTypeId: 'roadmap',
+      mapTypeControl: false
     });
 
 		var infowindow = new google.maps.InfoWindow();

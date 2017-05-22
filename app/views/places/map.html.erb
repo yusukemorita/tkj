@@ -14,7 +14,7 @@
   </div>
 </div>
 
-<input id="pac-input" class="controls" type="text" placeholder="SearchBox" style="width:60%;">
+<input id="pac-input" class="controls" type="text" placeholder="地名で検索" style="width:60%;">
 <div id="map" class="map_map"></div>
 
 <script type="text/javascript">
@@ -27,7 +27,8 @@
     var map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 38.5, lng: 138},
       zoom: 5,
-			mapTypeId: 'roadmap'
+      mapTypeId: 'roadmap',
+      mapTypeControl: false
     });
 
 		//各マーカーのinfowindow定義
@@ -106,7 +107,7 @@
       })(marker, i));
       markers.push(marker);
 		}
-    var mcOptions = {maxZoom: 10, imagePath: '/assets/images/m', minimumClusterSize: 4};
+    var mcOptions = {maxZoom: 9, imagePath: '/assets/images/m', minimumClusterSize: 4};
     var markerCluster = new MarkerClusterer(map, markers, mcOptions);
     setTimeout(function(){google.maps.event.trigger(map, 'resize');}, 1000);
   }

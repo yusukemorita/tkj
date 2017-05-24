@@ -9,8 +9,10 @@
       <ul>
         <li>04/21 トップページのGoogleマップに検索ボックス追加</li>
         <li>05/17 登録卓球場数４５０件突破！</li>
+        <li>05/24 「現在地から検索」機能追加</li>
       </ul>
     </div>
+    <button type="button" id="current_pos_btn" class="btn btn-danger">現在地から検索</button>
   </div>
 </div>
 
@@ -20,11 +22,12 @@
 <script type="text/javascript">
 
   var tkj_places = <%=raw @places.to_json %>;
+  var map;
 
   function initAutocomplete() {
 
 		//マップ作成
-    var map = new google.maps.Map(document.getElementById('map'), {
+    map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 38.5, lng: 138},
       zoom: 5,
       mapTypeId: 'roadmap',
@@ -33,6 +36,7 @@
 
 		//各マーカーのinfowindow定義
 		var infowindow = new google.maps.InfoWindow();
+
 //現在地マーカー作成
 //    if (navigator.geolocation) {
 //      navigator.geolocation.getCurrentPosition(function(position) {
@@ -96,8 +100,7 @@
       var marker = new google.maps.Marker({'position': latLng});var marker = new google.maps.Marker({
         position: latLng,
         map: map,
-        title: tkj_places[i].title,
-				animation: google.maps.Animation.DROP
+        title: tkj_places[i].title
       });
 			google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
@@ -109,8 +112,32 @@
 		}
     var mcOptions = {maxZoom: 9, imagePath: '/assets/images/m', minimumClusterSize: 4};
     var markerCluster = new MarkerClusterer(map, markers, mcOptions);
-    setTimeout(function(){google.maps.event.trigger(map, 'resize');}, 1000);
+    setTimeout(function(){google.maps.event.trigger(map, 'resize');}, 900);
   }
+
+  $("#current_pos_btn").click(function(){
+    //現在地マーカー作成
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        var marker = new google.maps.Marker({
+          icon: '/assets/current_position.png',
+          position: pos,
+          map: map
+        });
+        map.setCenter(pos);
+        map.setZoom(13);
+      }, function() {
+        handleLocationError(true, infoWindow, map.getCenter());
+      });
+    } else {
+      // Browser doesn't support Geolocation
+      handleLocationError(false, infoWindow, map.getCenter());
+    }
+  });
 
 </script>
 

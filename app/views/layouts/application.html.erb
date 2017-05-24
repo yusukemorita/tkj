@@ -29,7 +29,11 @@
           <li><a class="page-scroll wf-mplus1p" href="/about">当サイトについて</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a class="page-scroll" href="/users/sign_in">ログイン</a></li>
+          <% if user_signed_in? %>
+                 <li><%= link_to "ログアウト", destroy_user_session_path, :method => :delete %></li>
+          <% else %>
+            <li><a class="page-scroll" href="/users/sign_in">ログイン</a></li>
+          <% end %>
         </ul>
       </div>
       <!-- /.navbar-collapse -->

@@ -46,6 +46,13 @@
 
 <%= link_to '編集', edit_place_path(@place), class:'btn btn-info' %>
 <%= link_to '戻る', places_path, class:'btn btn-info'%>
+
+  <% unless user_signed_in? %>
+    <div>
+      <strong>編集にはアカウントが必要です。<br><a href='/users/sign_up' style='color:white; text-decoration: underline;'>こちら</a>からアカウントを作成してください。</strong><br>
+    </div>
+  <% end %>
+
 </div>
 
 <div class="show_map" id="map"></div>

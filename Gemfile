@@ -38,6 +38,7 @@ gem 'unicorn'
 gem 'hirb', '~> 0.7.3'
 gem 'bootstrap-sass'
 gem 'markerclustererplus-rails'
+gem 'geocoder'
 
 #ユーザー機能
 gem 'devise', '3.5.1'

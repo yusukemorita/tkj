@@ -1,12 +1,75 @@
 <p id="notice"><%= notice %></p>
 
-<h1 class='wf-mplus1p index_title' style="color:white;">卓球場一覧</h1>
+<h1 class='wf-mplus1p index_title' style="font-weight: 400;">
+  <% if @prefecture.present? %>
+    <%= @prefecture %>の卓球場一覧
+  <% else %>
+    卓球場一覧
+  <% end %>
+</h1>
+
+<div class="container">
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle index_btns" type="button" data-toggle="dropdown">都道府県で絞り込み
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><%= link_to '北海道', places_path(prefecture: '北海道') %></li>
+      <li><%= link_to '青森県', places_path(prefecture: '青森県') %></li>
+      <li><%= link_to '秋田県', places_path(prefecture: '秋田県') %></li>
+      <li><%= link_to '岩手県', places_path(prefecture: '岩手県') %></li>
+      <li><%= link_to '山形県', places_path(prefecture: '山形県') %></li>
+      <li><%= link_to '宮城県', places_path(prefecture: '宮城県') %></li>
+      <li><%= link_to '福島県', places_path(prefecture: '福島県') %></li>
+      <li><%= link_to '群馬県', places_path(prefecture: '群馬県') %></li>
+      <li><%= link_to '栃木県', places_path(prefecture: '栃木県') %></li>
+      <li><%= link_to '茨城県', places_path(prefecture: '茨城県') %></li>
+      <li><%= link_to '埼玉県', places_path(prefecture: '埼玉県') %></li>
+      <li><%= link_to '東京都', places_path(prefecture: '東京都') %></li>
+      <li><%= link_to '神奈川県', places_path(prefecture: '神奈川県') %></li>
+      <li><%= link_to '千葉県', places_path(prefecture: '千葉県') %></li>
+      <li><%= link_to '新潟県', places_path(prefecture: '新潟県') %></li>
+      <li><%= link_to '長野県', places_path(prefecture: '長野県') %></li>
+      <li><%= link_to '富山県', places_path(prefecture: '富山県') %></li>
+      <li><%= link_to '石川県', places_path(prefecture: '石川県') %></li>
+      <li><%= link_to '岐阜県', places_path(prefecture: '岐阜県') %></li>
+      <li><%= link_to '山梨県', places_path(prefecture: '山梨県') %></li>
+      <li><%= link_to '静岡県', places_path(prefecture: '静岡県') %></li>
+      <li><%= link_to '愛知県', places_path(prefecture: '愛知県') %></li>
+      <li><%= link_to '福井県', places_path(prefecture: '福井県') %></li>
+      <li><%= link_to '滋賀県', places_path(prefecture: '滋賀県') %></li>
+      <li><%= link_to '三重県', places_path(prefecture: '三重県') %></li>
+      <li><%= link_to '京都府', places_path(prefecture: '京都府') %></li>
+      <li><%= link_to '大阪府', places_path(prefecture: '大阪府') %></li>
+      <li><%= link_to '奈良県', places_path(prefecture: '奈良県') %></li>
+      <li><%= link_to '和歌山県', places_path(prefecture: '和歌山県') %></li>
+      <li><%= link_to '兵庫県', places_path(prefecture: '兵庫県') %></li>
+      <li><%= link_to '鳥取県', places_path(prefecture: '鳥取県') %></li>
+      <li><%= link_to '岡山県', places_path(prefecture: '岡山県') %></li>
+      <li><%= link_to '広島県', places_path(prefecture: '広島県') %></li>
+      <li><%= link_to '島根県', places_path(prefecture: '島根県') %></li>
+      <li><%= link_to '山口県', places_path(prefecture: '山口県') %></li>
+      <li><%= link_to '香川県', places_path(prefecture: '香川県') %></li>
+      <li><%= link_to '徳島県', places_path(prefecture: '徳島県') %></li>
+      <li><%= link_to '高知県', places_path(prefecture: '高知県') %></li>
+      <li><%= link_to '愛媛県', places_path(prefecture: '愛媛県') %></li>
+      <li><%= link_to '福岡県', places_path(prefecture: '福岡県') %></li>
+      <li><%= link_to '大分県', places_path(prefecture: '大分県') %></li>
+      <li><%= link_to '熊本県', places_path(prefecture: '熊本県') %></li>
+      <li><%= link_to '宮崎県', places_path(prefecture: '宮崎県') %></li>
+      <li><%= link_to '鹿児島県', places_path(prefecture: '鹿児島県') %></li>
+      <li><%= link_to '佐賀県', places_path(prefecture: '佐賀県') %></li>
+      <li><%= link_to '長崎県', places_path(prefecture: '長崎県') %></li>
+      <li><%= link_to '沖縄県', places_path(prefecture: '沖縄県') %></li>
+    </ul>
+  </div>
+  <a class="btn btn-primary back_btn index_btns" type="button" href="/places"><span class="mobile_hide">絞り込みを</span>元に戻す</a>
+</div>
 
 <% @places.each do |place| %>
 
   <div class='place_grid'>
     <!-- title -->
-    <p class='wf-mplus1p index_title'><%= place.title %></p>
+    <p class='wf-mplus1p place_title'><%= place.title %></p>
     <!-- 住所 -->
     <p class='wf-mplus1p'>
       <% if place.address.size > 0 %>
@@ -15,19 +78,12 @@
         <div class='unavailable'>住所未登録</div>
       <% end %>
     </p>
-    <!-- url -->
-    <p class='wf-mplus1p url_p'>
-      <% if place.url.size > 0 %>
-        <a href="<%= place.url %>" target="_blank">ホームページ</a>
-      <% else %>
-        <div class='unavailable'>HP未登録</div>
-      <% end %>
-    </p>
     <%= link_to '詳細', place, class:'btn btn-info show_btn' %>
-    <%= link_to 'HP', place.url, class:'btn btn-info url_btn' %>
+    <%= link_to_if(place.url.size > 0, 'HP', place.url, class:'btn btn-info url_btn' ) %>
   </div>
 
 <% end %>
 
-<%= link_to '新しい卓球場を登録', new_place_path, class:"btn btn-success" %>
-
+<div class="text-center">
+  <%= link_to '新しい卓球場を登録', new_place_path, class:"btn btn-success" %>
+</div>

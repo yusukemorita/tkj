@@ -79,7 +79,9 @@
       <% end %>
     </p>
     <%= link_to '詳細', place, class:'btn btn-info show_btn' %>
-    <%= link_to_if(place.url.size > 0, 'HP', place.url, class:'btn btn-info url_btn' ) %>
+    <% if place.url.size > 0 %>
+      <%= link_to 'HP', place.url, class:'btn btn-info url_btn', target: 'blank' %>
+    <% end %>
   </div>
 
 <% end %>

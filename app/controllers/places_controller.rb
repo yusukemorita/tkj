@@ -7,7 +7,12 @@ class PlacesController < ApplicationController
   # GET /places
   # GET /places.json
   def index
-    @places = Place.all
+    if params[:prefecture].present?
+      @prefecture = params[:prefecture]
+      @places = Place.where(prefecture: params[:prefecture])
+    else
+      @places = Place.all
+    end
   end
 
   def map

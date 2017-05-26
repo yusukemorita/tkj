@@ -1,8 +1,28 @@
 .index_title {
   text-align: center;
+  color: white;
+}
+.place_title {
+  text-align: center;
 }
 .unavailable {
   color: grey;
+}
+.dropdown-menu {
+  height: 300px;
+  overflow-y: scroll;
+}
+.dropdown {
+  float: left;
+}
+.place_grid .show_btn ,
+.place_grid .url_btn {
+  bottom: 8px;
+  position: absolute;
+  float: left;
+}
+.place_grid .url_btn {
+  left: 70px;
 }
 /* desktop */
 @media only screen and (min-width: 600px) {
@@ -19,18 +39,8 @@
     transition: 0.5s;
     position: relative;
   }
-  .place_grid .url_p :hover {
-    background-color: #B4B4B4;
-  }
-  .place_grid .index_title {
-    text-align: center;
-  }
-  .place_grid .show_btn {
-    bottom: 8px;
-    position: absolute;
-  }
-  .place_grid .url_btn {
-    display: none;
+  .back_btn {
+    margin-left: 20px;
   }
 }
 /* mobile */
@@ -48,19 +58,10 @@
     transition: 0.5s;
     position: relative;
   }
-  .place_grid .url_p {
+  .mobile_hide {
     display: none;
   }
-  .place_grid .index_title {
-    text-align: center;
-  }
-  .place_grid .show_btn ,
-  .place_grid .url_btn {
-    bottom: 8px;
-    position: absolute;
-    float: left;
-  }
-  .place_grid .url_btn {
-    left: 70px;
+  .back_btn {
+    margin-left: 10px;
   }
 }

@@ -17,11 +17,8 @@
   font-size: 8vw;
 }
 .parent .child .sub_text{
-  color: #212832;
+  color: white;
   font-size: 4.4vw;
-}
-.parent .child .map_news {
-  display: none;
 }
 /* desktop */
 @media only screen and (min-width: 600px) {
@@ -45,14 +42,6 @@
   }
   .parent .child .sub_text{
     font-size: 1.7em;
-  }
-  .parent .child li,
-  .parent .child .map_news p {
-    color: white;
-    list-style: none;
-  }
-  .parent .child .map_news {
-    display: inline;
   }
 }
 

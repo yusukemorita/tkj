@@ -23,7 +23,7 @@
   line-height: 150%;
 }
 body {
-  background-color: #636EA0;
+ background: url("/assets/background.jpeg") no-repeat fixed left top;
 }
 .wf-mplus1p {
   font-weight: 300;
@@ -45,16 +45,13 @@ body {
   transition: 0.5s;
   font-weight: 600;
 }
-//for mobile//
-@media only screen and (max-width: 600px) {
-  .navbar .menu_icon{
+.navbar .menu_icon{
   right: 0px;
   height: 10px;
-  width: auto;
+  width: 10px;
   margin-bottom: 3px;
-  }
 }
-//for desktop//
+//desktop//
 @media only screen and (min-width: 600px) {
   .yield_container {
     margin-bottom: 50px;

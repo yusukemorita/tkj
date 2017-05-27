@@ -21,3 +21,20 @@
 
 en:
   hello: "Hello world"
+  views:
+    pagination:
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
+      truncate: "&hellip;"
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "該当する卓球場が登録されていません。"
+          one: "全<b>1</b>件表示"
+          other: "全<b>%{count}</b>件表示"
+      more_pages:
+        display_entries: "全<b>%{total}</b>件中<b>%{first}&nbsp;-&nbsp;%{last}</b>件目を表示"
+        #display_entries: "Displaying %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> of <b>%{total}</b> in total"

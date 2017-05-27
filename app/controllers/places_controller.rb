@@ -9,9 +9,9 @@ class PlacesController < ApplicationController
   def index
     if params[:prefecture].present?
       @prefecture = params[:prefecture]
-      @places = Place.where(prefecture: params[:prefecture])
+      @places = Place.where(prefecture: params[:prefecture]).page(params[:page])
     else
-      @places = Place.all
+      @places = Place.all.page(params[:page])
     end
   end
 

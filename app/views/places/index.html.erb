@@ -65,27 +65,33 @@
   <a class="btn btn-primary back_btn index_btns" type="button" href="/places"><span class="mobile_hide">絞り込みを</span>元に戻す</a>
 </div>
 
-<% @places.each do |place| %>
+<div class="container">
+  <% @places.each do |place| %>
 
-  <div class='place_grid'>
-    <!-- title -->
-    <p class='wf-mplus1p place_title'><%= place.title %></p>
-    <!-- 住所 -->
-    <p class='wf-mplus1p'>
-      <% if place.address.size > 0 %>
-        <%= place.address %>
-      <% else %>
-        <div class='unavailable'>住所未登録</div>
+    <div class='place_grid'>
+      <!-- title -->
+      <p class='wf-mplus1p place_title'><%= place.title %></p>
+      <!-- 住所 -->
+      <p class='wf-mplus1p'>
+        <% if place.address.size > 0 %>
+          <%= place.address %>
+        <% else %>
+          <div class='unavailable'>住所未登録</div>
+        <% end %>
+      </p>
+      <%= link_to '詳細', place, class:'btn btn-info show_btn' %>
+      <% if place.url.size > 0 %>
+        <%= link_to 'HP', place.url, class:'btn btn-info url_btn', target: 'blank' %>
       <% end %>
-    </p>
-    <%= link_to '詳細', place, class:'btn btn-info show_btn' %>
-    <% if place.url.size > 0 %>
-      <%= link_to 'HP', place.url, class:'btn btn-info url_btn', target: 'blank' %>
-    <% end %>
-  </div>
+    </div>
 
-<% end %>
+  <% end %>
+</div>
 
-<div class="text-center">
-  <%= link_to '新しい卓球場を登録', new_place_path, class:"btn btn-success" %>
+<div class="container text-center">
+  <%= paginate @places, window: 2, theme: 'custom_theme' %>
+</div>
+
+<div class="container text-center">
+  <%= page_entries_info @places %>
 </div>

@@ -23,5 +23,7 @@
 
 #以下は自分で追加したもの
 #ignore db/schema.rb
-/db/schema.rb
-/Gemfile.lock
+db/schema.rb
+Gemfile.lock
+public/assets/*
+db/migrate/20170526135455_add_prefecture_to_places.rb

@@ -26,10 +26,6 @@
           height: available_height * 0.8,
           marginRight: 0
         });
-      } else {
-        return $('.map_map').css({
-          height: $(window).height() - $('.parent').offset().top - $('.parent').outerHeight(true)
-        });
       }
     }
   };

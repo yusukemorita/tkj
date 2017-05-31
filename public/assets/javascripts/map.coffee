@@ -17,6 +17,3 @@ app =
         marginBottom: available_height * 0.1
         height: available_height * 0.8
         marginRight:0
-    else
-      $('.map_map').css
-        height: $(window).height() -  $('.parent').offset().top - $('.parent').outerHeight(true)

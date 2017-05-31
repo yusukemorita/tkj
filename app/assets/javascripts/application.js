@@ -15,3 +15,4 @@
 //= require bootstrap-sprockets
 //= require universal
 //= require markerclusterer
+//= require twitter

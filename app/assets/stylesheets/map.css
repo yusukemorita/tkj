@@ -19,7 +19,7 @@
   color: white;
   font-size: 4.4vw;
 }
-/* desktop */
+/* mobile */
 @media only screen and (max-width: 600px) {
   .map_map {
     height: 600px;

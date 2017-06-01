@@ -2,7 +2,8 @@
   float: right;
   width: 60%;
 }
-.show_text p {
+.show_text p,
+.show_text strong{
   color: white;
 }
 .show_text .url_div p.url_p {

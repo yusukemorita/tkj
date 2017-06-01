@@ -17,13 +17,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-/////////////background//////////////
 * {
   box-sizing: border-box;
   line-height: 150%;
-}
-body {
- background: url("/assets/background.jpeg") no-repeat fixed left top;
 }
 .wf-mplus1p {
   font-weight: 300;
@@ -63,5 +59,18 @@ body {
     height: 50px;
     background-color: #E8E8E8;
     bottom: 0px;
+  }
+  body {
+    background: url("/assets/desktop_background.jpg") no-repeat fixed left top;
+    background-size: 100% auto;
+  }
+}
+
+/* mobile */
+@media only screen and (max-width: 600px) {
+  body {
+    background: url("/assets/background.jpg") no-repeat fixed;
+    background-size: auto 100%;
+    background-position-x: -300px;
   }
 }

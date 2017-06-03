@@ -40,6 +40,8 @@ gem 'bootstrap-sass'
 gem 'markerclustererplus-rails'
 gem 'geocoder'
 gem 'kaminari'
+gem 'ransack'
+gem 'pry-rails'
 
 #ユーザー機能
 gem 'devise', '3.5.1'

@@ -39,8 +39,11 @@
     transition: 0.5s;
     position: relative;
   }
-  .back_btn {
-    margin-left: 20px;
+  .title_search {
+    width: 250px;
+  }
+  .page_count {
+    color: white;
   }
 }
 /* mobile */
@@ -61,7 +64,7 @@
   .mobile_hide {
     display: none;
   }
-  .back_btn {
-    margin-left: 10px;
+  .search {
+    margin-bottom: 10px;
   }
 }

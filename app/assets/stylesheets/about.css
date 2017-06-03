@@ -3,12 +3,14 @@
   text-align: center;
   font-size: 10vw;
 }
+.about_text {
+  color: white;
+}
 .about_text p{
   font-size: 1.2em;
   text-align: center;
   line-height: 2;
 }
-
 /* desktop */
 @media only screen and (min-width: 600px) {
   .about_text p{

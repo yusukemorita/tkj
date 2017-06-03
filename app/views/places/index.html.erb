@@ -14,6 +14,13 @@
       <button class="btn btn-primary dropdown-toggle index_btns" type="button" data-toggle="dropdown">都道府県絞り込み
       <span class="caret"></span></button>
       <ul class="dropdown-menu">
+        <li><%= link_to '東京都', places_path(prefecture: '東京都') %></li>
+        <li><%= link_to '神奈川県', places_path(prefecture: '神奈川県') %></li>
+        <li><%= link_to '千葉県', places_path(prefecture: '千葉県') %></li>
+        <li><%= link_to '埼玉県', places_path(prefecture: '埼玉県') %></li>
+        <li><%= link_to '茨城県', places_path(prefecture: '茨城県') %></li>
+        <li><%= link_to '群馬県', places_path(prefecture: '群馬県') %></li>
+        <li><%= link_to '栃木県', places_path(prefecture: '栃木県') %></li>
         <li><%= link_to '北海道', places_path(prefecture: '北海道') %></li>
         <li><%= link_to '青森県', places_path(prefecture: '青森県') %></li>
         <li><%= link_to '秋田県', places_path(prefecture: '秋田県') %></li>
@@ -21,13 +28,6 @@
         <li><%= link_to '山形県', places_path(prefecture: '山形県') %></li>
         <li><%= link_to '宮城県', places_path(prefecture: '宮城県') %></li>
         <li><%= link_to '福島県', places_path(prefecture: '福島県') %></li>
-        <li><%= link_to '群馬県', places_path(prefecture: '群馬県') %></li>
-        <li><%= link_to '栃木県', places_path(prefecture: '栃木県') %></li>
-        <li><%= link_to '茨城県', places_path(prefecture: '茨城県') %></li>
-        <li><%= link_to '埼玉県', places_path(prefecture: '埼玉県') %></li>
-        <li><%= link_to '東京都', places_path(prefecture: '東京都') %></li>
-        <li><%= link_to '神奈川県', places_path(prefecture: '神奈川県') %></li>
-        <li><%= link_to '千葉県', places_path(prefecture: '千葉県') %></li>
         <li><%= link_to '新潟県', places_path(prefecture: '新潟県') %></li>
         <li><%= link_to '長野県', places_path(prefecture: '長野県') %></li>
         <li><%= link_to '富山県', places_path(prefecture: '富山県') %></li>

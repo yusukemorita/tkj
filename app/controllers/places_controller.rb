@@ -13,6 +13,8 @@ class PlacesController < ApplicationController
     else
       @places = Place.all.page(params[:page])
     end
+    @q = Place.ransack(params[:q])
+    @places = @q.result(distinct: true).page(params[:page])
   end
 
   def map

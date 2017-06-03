@@ -61,7 +61,7 @@
     bottom: 0px;
   }
   body {
-    background: url("/assets/desktop_background.jpg") no-repeat fixed left top;
+    background: url('/assets/desktop_background.jpg') no-repeat fixed left top;
     background-size: 100% auto;
   }
 }
@@ -69,7 +69,7 @@
 /* mobile */
 @media only screen and (max-width: 600px) {
   body {
-    background: url("/assets/background.jpg") no-repeat fixed;
+    background: url('/assets/background.jpg') no-repeat fixed;
     background-size: auto 100%;
     background-position-x: -300px;
   }

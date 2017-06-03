@@ -7,14 +7,15 @@ class PlacesController < ApplicationController
   # GET /places
   # GET /places.json
   def index
+    @q = Place.ransack(params[:q])
     if params[:prefecture].present?
       @prefecture = params[:prefecture]
       @places = Place.where(prefecture: params[:prefecture]).page(params[:page])
+    elsif params[:q].present?
+      @places = @q.result(distinct: true).page(params[:page])
     else
       @places = Place.all.page(params[:page])
     end
-    @q = Place.ransack(params[:q])
-    @places = @q.result(distinct: true).page(params[:page])
   end
 
   def map

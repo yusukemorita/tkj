@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  root :to => "places#map"
+  root :to => "places#top"
   resources :places
 
   get '/about' => 'places#about'
+  get '/map' => 'places#map', as: :map
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

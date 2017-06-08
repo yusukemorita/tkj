@@ -25,4 +25,3 @@
 #ignore db/schema.rb
 /db/schema.rb
 /Gemfile.lock
-/public/assets/*

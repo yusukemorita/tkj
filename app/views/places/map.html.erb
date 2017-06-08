@@ -25,39 +25,42 @@
   var tkj_places = <%=raw @places.to_json %>;
   var map;
 
+  //トップの現在地検索から来た場合、現在地に飛ぶ
+  if(<%= @get_current.present? %>){
+    currentLocation();
+  }
+  //現在地ボタンを押した場合現在地に飛ぶ
+  $("#current_pos_btn").click(currentLocation);
+
+  //トップの地名検索から来た場合
+  <% if @search_latlng.present? %>
+    var initial_center = {lat: <%= @search_latlng["lat"] %>, lng: <%= @search_latlng["lng"] %>};
+    var initial_zoom = 13;
+  <% else %>
+    var initial_center = {lat: 38.5, lng: 132.5};
+    var initial_zoom = 5;
+  <% end %>
+
+  //マップ作成
   function initAutocomplete() {
 
-		//マップ作成
     map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 38.5, lng: 132.5},
-      zoom: 5,
+      center: initial_center,
+      zoom: initial_zoom,
       mapTypeId: 'roadmap',
       mapTypeControl: false
     });
 
+    <% if @search_latlng.present? %>
+      var marker = new google.maps.Marker({
+        icon: '/assets/current_position.png',
+        position: initial_center,
+        map: map
+      });
+    <% end %>
+
 		//各マーカーのinfowindow定義
 		var infowindow = new google.maps.InfoWindow();
-
-//現在地マーカー作成
-//    if (navigator.geolocation) {
-//      navigator.geolocation.getCurrentPosition(function(position) {
-//        var pos = {
-//          lat: position.coords.latitude,
-//          lng: position.coords.longitude
-//        };
-//        var marker = new google.maps.Marker({
-//          icon: '/assets/current_position.png',
-//          position: pos,
-//          map: map
-//        });
-//        map.setCenter(pos);
-//      }, function() {
-//        handleLocationError(true, infoWindow, map.getCenter());
-//      });
-//    } else {
-//      // Browser doesn't support Geolocation
-//      handleLocationError(false, infoWindow, map.getCenter());
-//    }
 
     //検索ボックス作成(Create the search box and link it to the UI element.)
     var input = document.getElementById('pac-input');
@@ -116,7 +119,8 @@
     setTimeout(function(){google.maps.event.trigger(map, 'resize');}, 900);
   }
 
-  $("#current_pos_btn").click(function(){
+  //現在地特定
+  function currentLocation() {
     //現在地マーカー作成
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
@@ -138,7 +142,7 @@
       // Browser doesn't support Geolocation
       handleLocationError(false, infoWindow, map.getCenter());
     }
-  });
+  };
 
 </script>
 

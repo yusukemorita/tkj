@@ -4,8 +4,10 @@ class PlacesController < ApplicationController
     before_action :authenticate_user!, only: [:edit, :update, :destroy]
   end
 
-  # GET /places
-  # GET /places.json
+  def top
+    @places_num = Place.all.size
+  end
+
   def index
     @q = Place.ransack(params[:q])
     if params[:prefecture].present?
@@ -20,27 +22,24 @@ class PlacesController < ApplicationController
 
   def map
     @places = Place.all
+    @get_current = 'true' if params[:current].present?
+    @search_latlng = Geocoder.search(params[:search], params: {language: :ja}).first.geometry["location"] if params[:search].present?
+
   end
 
   def about
   end
 
-  # GET /places/1
-  # GET /places/1.json
   def show
   end
 
-  # GET /places/new
   def new
     @place = Place.new
   end
 
-  # GET /places/1/edit
   def edit
   end
 
-  # POST /places
-  # POST /places.json
   def create
     @place = Place.new(place_params)
 

@@ -24,6 +24,10 @@
 .place_grid .url_btn {
   left: 70px;
 }
+.title-search {
+  width: 80%;
+  margin: auto;
+}
 /* desktop */
 @media only screen and (min-width: 600px) {
   .place_grid {
@@ -38,9 +42,6 @@
     background: white;
     transition: 0.5s;
     position: relative;
-  }
-  .title_search {
-    width: 250px;
   }
   .page_count {
     color: white;
@@ -66,5 +67,8 @@
   }
   .search {
     margin-bottom: 10px;
+  }
+  .dropdown-toggle {
+    width: 80%;
   }
 }

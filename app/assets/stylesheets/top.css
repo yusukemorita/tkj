@@ -1,0 +1,88 @@
+.top_input {
+  margin: auto;
+  padding: 0 20%;
+}
+.parent_circle .bottom .circle {
+  width: 45%;
+  line-height: 20%;
+  background: rgba(255, 255, 255, .5);
+  transition: 0.5s;
+}
+.parent_circle .bottom .right {
+  float: right;
+}
+.parent_circle .bottom .left {
+  float: left;
+}
+.parent_circle .bottom .circle,
+.parent_circle .top p{
+  color: black;
+}
+.parent_circle .top {
+  background: rgba(255, 255, 255, .5);
+  width: 95%;
+}
+.total-div {
+  color: #D83F3C;
+}
+.num_text {
+  color: white;
+}
+/* mobile */
+@media only screen and (max-width: 600px) {
+  .parent_circle .bottom .circle,
+  .parent_circle .top {
+    padding: 10% 0;
+    text-align: center;
+    height: 20%;
+    margin: 2.5%;
+  }
+  .parent_circle {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .parent_circle .bottom .circle,
+  .parent_circle .top p{
+    font-size: 4vw;
+  }
+  .total-div {
+    font-size: 20vw;
+  }
+  .num_text {
+    margin-top: -10px;
+  }
+}
+/* desktop */
+@media only screen and (min-width: 600px) {
+  .parent_circle .bottom a:hover {
+    text-decoration: none;
+    -webkit-transform: scale(1.15);
+    -ms-transform: scale(1.15);
+    transform: scale(1.15);
+    transition: 0.5s;
+  }
+  .parent_circle .bottom .circle,
+  .parent_circle .top {
+    padding: 10% 0;
+    text-align: center;
+    height: 20%;
+    margin: 2.5%;
+  }
+  .parent_circle {
+    float: right;
+    width: 60%;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .parent_circle .bottom .circle,
+  .parent_circle .top p{
+    font-size: 2vw;
+  }
+  .total-div {
+    font-size: 10vw;
+  }
+  .num_text {
+    margin-top: -20px;
+    margin-bottom: 30px;
+  }
+}

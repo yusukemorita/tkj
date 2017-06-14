@@ -1,4 +1,4 @@
-<%= form_for(@place) do |f| %>
+<%= form_for @place, :html => { :multipart => true } do |f| %>
   <% if @place.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@place.errors.count, "error") %> prohibited this place from being saved:</h2>
@@ -26,22 +26,11 @@
     <span class="input-group-addon">その他</span>
     <%= f.text_area :content, placeholder:'任意　混雑状況、開館時間など', class: 'form-control', rows:5, id:'other_input' %>
   </div>
+  <%= file_field_tag :photo , class:'file-btn'%>
   <%= f.hidden_field :longitude, id:'long_input' %>
   <%= f.hidden_field :latitude , id:'lat_input' %>
   <div class="actions" id="submit_btn">
     <%= f.submit "登録", class:"btn btn-info col-md-offset-5" %>
   </div>
-<% end %>
 
-<head>
-  <style>
-    @media only screen and (min-width: 600px) {
-      .edit_place {
-        width: 30%;
-      }
-      .edit_place .input-group {
-        margin-bottom: 15px;
-      }
-    }
- </style>
-</head>
+<% end %>

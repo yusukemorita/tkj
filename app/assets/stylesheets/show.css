@@ -1,23 +1,40 @@
-.show_map {
-  float: right;
-  width: 60%;
-}
+.show_text,
 .show_text p,
 .show_text strong{
   color: white;
 }
-.show_text .url_div p.url_p {
-  width: 300px;
-}
-.show_text p a {
-  word-wrap: break-word;
-}
-.show_text {
-  float: left;
+/* desktop */
+@media only screen and (min-width: 600px) {
+  .show_map {
+    width: 100%;
+  }
+  .show_text .left_float {
+    float: left;
+    width: 50%;
+  }
+  .show_text p a {
+    word-wrap: break-word;
+  }
+  .show_text {
+    float: left;
+  }
+  .show_photo {
+    width: 45%;
+    height: auto;
+    float: right;
+  }
 }
 /* mobile */
 @media only screen and (max-width: 600px) {
   .show_map {
     width: 100%;
+    height: 400px;
+    margin-bottom: 15px;
+  }
+  .show_photo {
+    width: 100%;
+    height: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
   }
 }

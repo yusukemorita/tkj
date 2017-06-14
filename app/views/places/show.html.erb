@@ -1,56 +1,61 @@
 <%= javascript_include_tag "/assets/javascripts/show" %>
+
 <div id="notice" style="color:white"><%= notice %></div>
 
-<div class="show_text">
+<div class="show_text wf-mplus1p">
+  <div class="left_float">
 
-  <div>
-    <strong>卓球場名</strong><br>
-    <p>
-      <%= @place.title %>
-    </p>
-  </div>
+    <h1 class="show_title"><%= @place.title %></h1>
 
-  <div class='url_div'>
-    <strong>ホームページ</strong><br>
-    <p class='url_p'>
-      <% if @place.url.size > 0 %>
-        <a href=<%= @place.url %> style="color:white"><%= @place.url %></a>
-      <% else %>
-        未登録
-      <% end %>
-    </p>
-  </div>
-
-  <div>
-    <strong>住所</strong><br>
-    <p>
-      <% if @place.address.present? %>
-        <%= @place.address %><br>
-        <button type="button" class="btn btn-sm btn-success" href=https://google.com/maps/place/' + <%= @place.address %>>Googleマップで開く</button>
-      <% else %>
-        未登録
-      <% end %>
-    </p>
-  </div>
-
-  <div>
-    <strong>その他</strong><br>
-    <p>
-      <% if @place.content.present? %>
-        <%= @place.content %>
-      <% else %>
-        未登録
-      <% end %>
-    </p>
-  </div>
-
-<%= link_to '編集', edit_place_path(@place), class:'btn btn-info' %>
-<%= link_to '戻る', places_path, class:'btn btn-info'%>
-
-  <% unless user_signed_in? %>
-    <div>
-      <strong>編集にはアカウントが必要です。<br><a href='/users/sign_up' style='color:white; text-decoration: underline;'>こちら</a>からアカウントを作成してください。</strong><br>
+    <div class='show_url'>
+      <strong>ホームページ</strong><br>
+      <div class='url_p'>
+        <% if @place.url.size > 0 %>
+          <a href=<%= @place.url %> style="color:white"><%= @place.url %></a>
+        <% else %>
+          未登録
+        <% end %>
+      </div>
     </div>
+
+    <div class='show_address'>
+      <strong>住所</strong><br>
+      <div>
+        <% if @place.address.present? %>
+          <%= @place.address %><br>
+          <button type="button" class="btn btn-sm btn-success" href=https://google.com/maps/place/' + <%= @place.address %>>Googleマップで開く</button>
+        <% else %>
+          未登録
+        <% end %>
+      </div>
+    </div>
+
+    <div class='show_other'>
+      <strong>その他</strong><br>
+      <p>
+        <% if @place.content.present? %>
+          <%= @place.content %>
+        <% else %>
+          未登録
+        <% end %>
+      </p>
+    </div>
+
+  <%= link_to '編集', edit_place_path(@place), class:'btn btn-info' %>
+  <%= link_to '戻る', places_path, class:'btn btn-info'%>
+
+    <% unless user_signed_in? %>
+      <div>
+        <strong>編集にはアカウントが必要です。<br><a href='/users/sign_up' style='color:white; text-decoration: underline;'>こちら</a>からアカウントを作成してください。</strong><br>
+      </div>
+    <% end %>
+
+  </div>
+
+  <% if @place.photos.present? %>
+    <% @place.photos.each do |photo| %>
+      <%= image_tag photo.image.url, class: 'show_photo' %>
+    <% end %>
   <% end %>
 
 </div>

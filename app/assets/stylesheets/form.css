@@ -1,0 +1,12 @@
+.file-btn {
+  color: white;
+  margin-bottom: 15px;
+}
+@media only screen and (min-width: 600px) {
+  .edit_place {
+    width: 50%;
+  }
+  .edit_place .input-group {
+    margin-bottom: 15px;
+  }
+}

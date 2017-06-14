@@ -24,7 +24,6 @@ class PlacesController < ApplicationController
     @places = Place.all
     @get_current = 'true' if params[:current].present?
     @search_latlng = Geocoder.search(params[:search], params: {language: :ja}).first.geometry["location"] if params[:search].present?
-
   end
 
   def about
@@ -42,7 +41,18 @@ class PlacesController < ApplicationController
 
   def create
     @place = Place.new(place_params)
-
+    if @place.save
+      # params[:photo] will be an array.
+      # you can check total number of photos selected using params[:photo].count
+      if params[:photo].class == Array
+        params[:photo].each do |photo|
+          @place.photos.create(:photo=> photo)
+          # Don't forget to mention :photo(field name)
+        end
+      else
+        @place.photos.create(title: params[:photo].original_filename, image: params[:photo] )
+      end
+    end
     respond_to do |format|
       if @place.save
         format.html { redirect_to @place, notice: '新規卓球場の登録ありがとうございます。' }
@@ -54,9 +64,17 @@ class PlacesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /places/1
-  # PATCH/PUT /places/1.json
   def update
+    if @place.save
+      if params[:photo].class == Array
+        params[:photo].each do |photo|
+          @place.photos.create(:photo=> photo)
+          # Don't forget to mention :photo(field name)
+        end
+      else
+        @place.photos.create(title: params[:photo].original_filename, image: params[:photo] )
+      end
+    end
     respond_to do |format|
       if @place.update(place_params)
         format.html { redirect_to @place, notice: 'Place was successfully updated.' }

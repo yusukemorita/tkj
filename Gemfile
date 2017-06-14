@@ -41,7 +41,12 @@ gem 'markerclustererplus-rails'
 gem 'geocoder'
 gem 'kaminari'
 gem 'ransack'
+
+#デバッグ
 gem 'pry-rails'
+
+#写真アップ機能
+gem "paperclip", "~> 5.0.0"
 
 #ユーザー機能
 gem 'devise', '3.5.1'

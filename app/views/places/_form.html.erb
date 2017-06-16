@@ -27,6 +27,11 @@
     <%= f.text_area :content, placeholder:'任意　混雑状況、開館時間など', class: 'form-control', rows:5, id:'other_input' %>
   </div>
   <%= file_field_tag :photo , class:'file-btn'%>
+  <div class="input-group">
+    <span class="input-group-addon">画像ソース</span>
+    <%= text_field_tag :source, '', class:'form-control' %>
+  </div>
+  <span style='color:white'>他サイトから画像を引用している場合、必ずurlを入力してください。</span>
   <%= f.hidden_field :longitude, id:'long_input' %>
   <%= f.hidden_field :latitude , id:'lat_input' %>
   <div class="actions" id="submit_btn">

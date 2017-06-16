@@ -41,7 +41,7 @@
       </p>
     </div>
 
-    <% if @place.photos.source.present? %>
+    <% if @place.photos.first.source.present? %>
       <div class='show_other'>
         <strong>画像ソース</strong><br>
         <p><%= @place.photos.first.source %></p>

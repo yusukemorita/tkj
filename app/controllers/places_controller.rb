@@ -59,14 +59,7 @@ class PlacesController < ApplicationController
 
   def update
     if @place.save
-      if params[:photo].class == Array
-        params[:photo].each do |photo|
-          @place.photos.create(:photo=> photo)
-          # Don't forget to mention :photo(field name)
-        end
-      else
-        @place.photos.create(title: params[:photo].original_filename, image: params[:photo] )
-      end
+      @place.photos.create(title: params[:photo].original_filename, image: params[:photo], source: params[:source] )
     end
     respond_to do |format|
       if @place.update(place_params)

@@ -41,11 +41,13 @@
       </p>
     </div>
 
-    <% if @place.photos.first.source.present? %>
-      <div class='show_other'>
-        <strong>画像ソース</strong><br>
-        <p><%= @place.photos.first.source %></p>
-      </div>
+    <% if @place.photos.present? %>
+      <% if @place.photos.first.source.present? %>
+        <div class='show_other'>
+          <strong>画像ソース</strong><br>
+          <p><%= @place.photos.first.source %></p>
+        </div>
+      <% end %>
     <% end %>
 
   <%= link_to '編集', edit_place_path(@place), class:'btn btn-info' %>

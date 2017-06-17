@@ -17,6 +17,7 @@
   }
   .show_text {
     float: left;
+    width: 100%;
   }
   .show_photo {
     width: 45%;

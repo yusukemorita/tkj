@@ -41,7 +41,7 @@ class PlacesController < ApplicationController
 
   def create
     @place = Place.new(place_params)
-    if @place.save
+    if @place.save && params[:photo].present?
       # params[:photo] will be an array.
       # you can check total number of photos selected using params[:photo].count
       @place.photos.create(title: params[:photo].original_filename, image: params[:photo], source: params[:source] )
@@ -58,7 +58,7 @@ class PlacesController < ApplicationController
   end
 
   def update
-    if @place.save
+    if @place.save && params[:photo].present?
       @place.photos.create(title: params[:photo].original_filename, image: params[:photo], source: params[:source] )
     end
     respond_to do |format|

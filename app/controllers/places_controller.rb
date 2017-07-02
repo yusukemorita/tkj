@@ -64,6 +64,8 @@ class PlacesController < ApplicationController
     end
     respond_to do |format|
       if @place.update(place_params)
+        @place.hours = JSON.parse(params[:place][:hours]) if params[:place][:hours].present?
+        @place.save
         format.html { redirect_to @place, notice: 'Place was successfully updated.' }
         format.json { render :show, status: :ok, location: @place }
       else
@@ -91,6 +93,6 @@ class PlacesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def place_params
-      params.require(:place).permit(:title, :url, :latitude, :longitude, :content, :address, :source, :hours )
+      params.require(:place).permit(:title, :url, :latitude, :longitude, :content, :address, :source, :hours)
     end
 end

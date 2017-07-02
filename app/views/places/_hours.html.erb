@@ -1,0 +1,59 @@
+<div class='container'>
+  <% case locals[:day] %>
+  <% when 'monday' %>
+    <div class='day-label'>月</div>
+  <% when 'tuesday' %>
+    <div class='day-label'>火</div>
+  <% when 'wednesday' %>
+    <div class='day-label'>水</div>
+  <% when 'thursday' %>
+    <div class='day-label'>木</div>
+  <% when 'friday' %>
+    <div class='day-label'>金</div>
+  <% when 'saturday' %>
+    <div class='day-label'>土</div>
+  <% when 'sunday' %>
+    <div class='day-label'>日</div>
+  <% end %>
+  <div class="form-group open-time-div">
+    <% case locals[:day] %>
+    <% when 'common' %>
+      <input type='text' class="form-control open-input" id='common-open'/>
+    <% when 'monday' %>
+      <input type='text' class="form-control open-input" id='mon-open'/>
+    <% when 'tuesday' %>
+      <input type='text' class="form-control open-input" id='tue-open'/>
+    <% when 'wednesday' %>
+      <input type='text' class="form-control open-input" id='wed-open'/>
+    <% when 'thursday' %>
+      <input type='text' class="form-control open-input" id='thu-open'/>
+    <% when 'friday' %>
+      <input type='text' class="form-control open-input" id='fri-open'/>
+    <% when 'saturday' %>
+      <input type='text' class="form-control open-input" id='sat-open'/>
+    <% when 'sunday' %>
+      <input type='text' class="form-control open-input" id='sun-open'/>
+    <% end %>
+  </div>
+  <span class='wiggle'>~</span>
+  <div class="form-group close-time-div">
+    <% case locals[:day] %>
+    <% when 'common' %>
+      <input type='text' class="form-control close-input" id='common-close'/>
+    <% when 'monday' %>
+      <input type='text' class="form-control close-input" id='mon-close'/>
+    <% when 'tuesday' %>
+      <input type='text' class="form-control close-input" id='tue-close'/>
+    <% when 'wednesday' %>
+      <input type='text' class="form-control close-input" id='wed-close'/>
+    <% when 'thursday' %>
+      <input type='text' class="form-control close-input" id='thu-close'/>
+    <% when 'friday' %>
+      <input type='text' class="form-control close-input" id='fri-close'/>
+    <% when 'saturday' %>
+      <input type='text' class="form-control close-input" id='sat-close'/>
+    <% when 'sunday' %>
+      <input type='text' class="form-control close-input" id='sun-close'/>
+    <% end %>
+  </div>
+</div>

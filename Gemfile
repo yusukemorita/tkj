@@ -46,7 +46,7 @@ gem 'ransack'
 gem 'pry-rails'
 
 #写真アップ機能
-gem "paperclip", "~> 5.0.0"
+gem 'paperclip', '~> 5.0.0'
 
 #ユーザー機能
 gem 'devise', '3.5.1'

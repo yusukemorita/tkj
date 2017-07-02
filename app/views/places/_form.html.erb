@@ -1,4 +1,7 @@
+<%= javascript_include_tag 'form' %>
+
 <%= form_for @place, :html => { :multipart => true } do |f| %>
+
   <% if @place.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@place.errors.count, "error") %> prohibited this place from being saved:</h2>
@@ -10,32 +13,104 @@
       </ul>
     </div>
   <% end %>
+
   <div class="input-group" id="name_div">
     <span class="input-group-addon">名前</span>
     <%= f.text_field :title, placeholder:'必須（自動入力）', class: 'form-control', id:'name_input' %>
   </div>
+
   <div class="input-group" id="address_div">
     <span class="input-group-addon">住所</span>
     <%= f.text_field :address, placeholder:'必須', class: 'form-control', id:'address_input' %>
   </div>
+
   <div class="input-group" id="url_div">
     <span class="input-group-addon">ホームページ</span>
     <%= f.text_field :url, placeholder:'任意', class: 'form-control', id:'url_input' %>
   </div>
+
+  <div class='hours-div'>
+
+    <p class="input-title">営業時間</p>
+
+    <div class="text-center">
+      <input id='hours-toggle' type="checkbox" checked data-toggle="toggle" data-width="120" data-height="60" data-on="全曜日共通<br>で設定する" data-off="曜日毎<br>に設定する" data-offstyle="warning" /><br>
+    </div>
+
+    <div class="common-time">
+      <%= render 'places/hours', locals: {day: 'common'} %>
+
+      <div class='container'>
+        <div class='input-title'>休館日</div>
+        <div class="form-check form-check-inline"> <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" id="mon-box" value='1'> 月
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" id="tue-box" value='2'> 火
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" id="wed-box" value='3'> 水
+          </label>
+        </div>
+        <div class="form-check form-check-inline"> <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" id="thu-box" value='4'> 木
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" id="fri-box" value='5'> 金
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" id="sat-box" value='6'> 土
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" id="sun-box" value='7'> 日
+          </label>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="seperate-time" style='display:none'>
+      <%= render 'places/hours', locals: {day: 'monday'} %>
+      <%= render 'places/hours', locals: {day: 'tuesday'} %>
+      <%= render 'places/hours', locals: {day: 'wednesday'} %>
+      <%= render 'places/hours', locals: {day: 'thursday'} %>
+      <%= render 'places/hours', locals: {day: 'friday'} %>
+      <%= render 'places/hours', locals: {day: 'saturday'} %>
+      <%= render 'places/hours', locals: {day: 'sunday'} %>
+    </div>
+
+  </div>
+  <%= f.hidden_field :hours, id:'hours_input' %>
+
   <div class="input-group" id="other_div">
     <span class="input-group-addon">その他</span>
-    <%= f.text_area :content, placeholder:'任意　混雑状況、開館時間など', class: 'form-control', rows:5, id:'other_input' %>
+    <%= f.text_area :content, placeholder:'任意　混雑状況、広さなど', class: 'form-control', rows:5, id:'other_input' %>
   </div>
+
+  <p class="input-title">画像を追加</p>
   <%= file_field_tag :photo , class:'file-btn'%>
+
   <div class="input-group">
     <span class="input-group-addon">画像ソース</span>
     <%= text_field_tag :source, '', class:'form-control' %>
   </div>
   <span style='color:white'>他サイトから画像を引用している場合、必ずurlを入力してください。</span>
+
   <%= f.hidden_field :longitude, id:'long_input' %>
   <%= f.hidden_field :latitude , id:'lat_input' %>
-  <div class="actions" id="submit_btn">
-    <%= f.submit "登録", class:"btn btn-info col-md-offset-5" %>
+
+  <div class="actions text-center" id="submit_btn">
+    <%= f.submit "登録", class:"btn btn-info" %>
   </div>
 
 <% end %>

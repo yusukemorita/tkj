@@ -41,6 +41,7 @@ class PlacesController < ApplicationController
 
   def create
     @place = Place.new(place_params)
+    @place.hours = JSON.parse(params[:place][:hours]) if params[:place][:hours].present?
     if @place.save && params[:photo].present?
       # params[:photo] will be an array.
       # you can check total number of photos selected using params[:photo].count
@@ -90,6 +91,6 @@ class PlacesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def place_params
-      params.require(:place).permit(:title, :url, :latitude, :longitude, :content, :address, :source)
+      params.require(:place).permit(:title, :url, :latitude, :longitude, :content, :address, :source, :hours )
     end
 end

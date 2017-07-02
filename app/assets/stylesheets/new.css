@@ -9,6 +9,9 @@
   display: none;
 }
 @media only screen and (max-width: 600px) {
+  .new_map {
+    margin-top: 15px;
+  }
   .new_place {
     margin-top: 5px;
   }

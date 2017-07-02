@@ -2,11 +2,67 @@
   color: white;
   margin-bottom: 15px;
 }
+.hours-div .wiggle {
+  color: white;
+}
+.hours-div .container {
+  width: 100%;
+}
+.hours-div .open-time-div {
+  float: left;
+  width: 35%;
+}
+.hours-div .close-time-div {
+  float: left;
+  width: 35%;
+}
+.open-input, .close-input {
+  text-align: center;
+}
+.seperate-time .day-label {
+  color: white;
+  float: left;
+  line-height: 250%;
+}
+.wiggle {
+  float: left;
+  font-size: 2.5vw;
+  width: 20%;
+  text-align: center;
+}
+.input-title {
+  font-size: 1.5vw;
+  color: white;
+}
+.toggle-on {
+  left: 50%;
+  margin-left: -60px;
+}
+.common-time, .seperate-time {
+  padding-top: 20px;
+}
+.day-label {
+  width: 10%;
+  text-align: center;
+}
+.form-check {
+  color: white;
+  float: left;
+  margin-right: 10px;
+}
 @media only screen and (min-width: 600px) {
   .edit_place {
     width: 50%;
   }
   .edit_place .input-group {
     margin-bottom: 15px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .input-title {
+    font-size: 4vw;
+  }
+  .wiggle {
+    font-size: 5.3vw;
   }
 }

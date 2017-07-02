@@ -14,12 +14,12 @@ app =
     if $(window).width() > 600
       available_height = $(window).outerHeight(true) - $('.navbar').outerHeight() - $('.footer').height()
 
-      #ポップアップ
+      #ポップアップのcss
       $('.popover').css
         top: available_height * 0.5
         left: available_height * 0.3
 
-      #マップ
+      #マップのcss
       $('.new_map').css
         marginTop: available_height * 0.1
         marginBottom: available_height * 0.1

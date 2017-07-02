@@ -8,9 +8,6 @@
 .popover.right > .arrow {
   display: none;
 }
-.new-place-form {
-  display: none;
-}
 @media only screen and (max-width: 600px) {
   .new_map {
     margin-top: 15px;

@@ -37,6 +37,7 @@ class PlacesController < ApplicationController
   end
 
   def edit
+    gon.hours = @place.hours
   end
 
   def create
@@ -64,8 +65,10 @@ class PlacesController < ApplicationController
     end
     respond_to do |format|
       if @place.update(place_params)
-        @place.hours = JSON.parse(params[:place][:hours]) if params[:place][:hours].present?
-        @place.save
+        if params[:place][:hours].present?
+          @place.hours = JSON.parse(params[:place][:hours]) 
+          @place.save
+        end
         format.html { redirect_to @place, notice: 'Place was successfully updated.' }
         format.json { render :show, status: :ok, location: @place }
       else

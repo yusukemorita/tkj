@@ -7,14 +7,68 @@ $(function () {
     timeFormat: 'H:i'
   });
 
+  //input existing values
+  if (gon.hours) {
+    var hours = gon.hours
+    if (hours["common_flag"] === true ) {
+      //set existing values
+      $('#common-open').val(hours["hours"]["open"]);
+      $('#common-close').val(hours["hours"]["close"]);
+      hours["closed_days"].forEach(function(num) {
+        $("input[value=" + num + "]").prop('checked', true);
+      })
+    } else {
+      //show seperate time and switch toggle
+      $('#hours-toggle').bootstrapToggle('off');
+      $('.common-time').hide();
+      $('.seperate-time').show();
+      //set existing values
+      if (hours["hours"]["mon"]) {
+        $('#mon-open').val(hours["hours"]["mon"]["open"]);
+        $('#mon-close').val(hours["hours"]["mon"]["close"]);
+      }
+      if (hours["hours"]["tue"]) {
+        $('#tue-open').val(hours["hours"]["tue"]["open"]);
+        $('#tue-close').val(hours["hours"]["tue"]["close"]);
+      }
+      if (hours["hours"]["wed"]) {
+        $('#wed-open').val(hours["hours"]["wed"]["open"]);
+        $('#wed-close').val(hours["hours"]["wed"]["close"]);
+      }
+      if (hours["hours"]["thu"]) {
+        $('#thu-open').val(hours["hours"]["thu"]["open"]);
+        $('#thu-close').val(hours["hours"]["thu"]["close"]);
+      }
+      if (hours["hours"]["fri"]) {
+        $('#fri-open').val(hours["hours"]["fri"]["open"]);
+        $('#fri-close').val(hours["hours"]["fri"]["close"]);
+      }
+      if (hours["hours"]["sat"]) {
+        $('#sat-open').val(hours["hours"]["sat"]["open"]);
+        $('#sat-close').val(hours["hours"]["sat"]["close"]);
+      }
+      if (hours["hours"]["sun"]) {
+        $('#sun-open').val(hours["hours"]["sun"]["open"]);
+        $('#sun-close').val(hours["hours"]["sun"]["close"]);
+      }
+    }
+  }
+
+  makeHash();
+
   //listen for toggle change
   $('#hours-toggle').change(function() {
-    $('.seperate-time').toggle();
-    $('.common-time').toggle();
+    var toggle_val = $('#hours-toggle').prop('checked');
+    if (toggle_val === true) {
+      $('.seperate-time').hide();
+      $('.common-time').show();
+    } else {
+      $('.common-time').hide();
+      $('.seperate-time').show();
+    }
   });
 
-  //listen for input change
-  $('#hours-toggle, #common-close, #mon-close, #tue-close, #wed-close, #thu-close, #fri-close, #sat-close, #sun-close, #common-open, #mon-open, #tue-open, #wed-open, #thu-open, #fri-open, #sat-open, #sun-open, #mon-box, #tue-box, #wed-box, #thu-box, #fri-box, #sat-box, #sun-box').change(function() {
+  function makeHash(){
 
     //営業時間が毎日共通の場合
     if ($('#hours-toggle').prop('checked') === true) {
@@ -51,8 +105,11 @@ $(function () {
     }
 
     //railsのhoursのhidden_inputにhours_hashを代入
-    console.log(hours_hash)
+    console.log(hours_hash);
     $('#hours_input').val(JSON.stringify(hours_hash))
-  });
+  };
+
+  //listen for input change
+  $('#hours-toggle, #common-close, #mon-close, #tue-close, #wed-close, #thu-close, #fri-close, #sat-close, #sun-close, #common-open, #mon-open, #tue-open, #wed-open, #thu-open, #fri-open, #sat-open, #sun-open, #mon-box, #tue-box, #wed-box, #thu-box, #fri-box, #sat-box, #sun-box').change( makeHash );
 
 });

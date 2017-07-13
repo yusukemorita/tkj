@@ -3,6 +3,12 @@
 .show_text strong{
   color: white;
 }
+.show_text .show_title {
+  font-weight: 400;
+}
+.show-part {
+  margin: 20px 0px;
+}
 /* desktop */
 @media only screen and (min-width: 600px) {
   .show_map {
@@ -20,9 +26,18 @@
     width: 100%;
   }
   .show_photo {
-    width: 45%;
     height: auto;
+  }
+  .source-text, .show_photo {
     float: right;
+    width: 45%;
+  }
+  .source-text {
+    word-wrap: break-word;
+  }
+  .sign-in-modal .modal-dialog .modal-content {
+    left: 50%;
+    top: 50%;
   }
 }
 /* mobile */

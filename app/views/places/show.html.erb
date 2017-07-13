@@ -1,13 +1,14 @@
 <%= javascript_include_tag "/assets/javascripts/show" %>
+<%= javascript_include_tag "show_2" %>
 
 <div id="notice" style="color:white"><%= notice %></div>
 
 <div class="show_text wf-mplus1p">
   <div class="left_float">
 
-    <h1 class="show_title"><%= @place.title %></h1>
+    <h1 class="show_title wf-mplus1p"><%= @place.title %></h1>
 
-    <div class='show_url'>
+    <div class='show_url show-part'>
       <strong>ホームページ</strong><br>
       <div class='url_p'>
         <% if @place.url.size > 0 %>
@@ -18,7 +19,7 @@
       </div>
     </div>
 
-    <div class='show_address'>
+    <div class='show_address show-part'>
       <strong>住所</strong><br>
       <div>
         <% if @place.address.present? %>
@@ -30,31 +31,44 @@
       </div>
     </div>
 
-    <div class='show_other'>
-      <strong>開館時間</strong><br>
-      <p>
+    <% if @place.hours.present? && @place.hours['common_flag'] == true %>
+      <div class='show_other show-part'>
+        <strong>開館時間</strong><br>
         <!-- 全曜日共通の場合 -->
-        <% if @place.hours.present? && @place.hours['common_flag'] == true %>
-          <%= @place.hours['hours']['open'] %> ~ <%= @place.hours['hours']['close'] %>
-          <br><strong>休館日</strong>
-          <%= @place.hours['closed_days'].present? ? num_to_day(@place.hours['closed_days']) : 'なし' %>
+          <p><%= @place.hours['hours']['open'] %> ~ <%= @place.hours['hours']['close'] %></p>
+      </div>
 
-        <!-- 曜日毎に異なる場合 -->
-        <% elsif @place.hours.present? && @place.hours['common_flag'] == false %>
+      <% if @place.hours['closed_days'].present? %>
+        <div class='show_other show-part'>
+          <br><strong>休館日</strong>
+          <p><%= num_to_day(@place.hours['closed_days']) %></p>
+        </div>
+      <% end %>
+
+    <!-- 曜日毎に異なる場合 -->
+    <% elsif @place.hours.present? && @place.hours['common_flag'] == false %>
+
+      <div class='show_other show-part'>
+        <strong>開館時間</strong><br>
+        <ul>
           <% ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'].each do |symbol| %>
-            <ul>
             <% if @place.hours['hours'][symbol].present? %>
               <li><%= sym_to_day(symbol) %>: <%= @place.hours['hours'][symbol]['open'] %> ~ <%= @place.hours['hours'][symbol]['close'] %></li>
             <% end %>
-            </ul>
           <% end %>
-        <% else %>
-          未登録
-        <% end %>
-      </p>
-    </div>
+        </ul>
+      </div>
 
-    <div class='show_other'>
+
+    <% else %>
+      <div class='show_other show-part'>
+        <strong>開館時間</strong><br>
+        <!-- 全曜日共通の場合 -->
+        <p>未登録</p>
+      </div>
+    <% end %>
+
+    <div class='show_other show-part'>
       <strong>その他</strong><br>
       <p>
         <% if @place.content.present? %>
@@ -65,35 +79,47 @@
       </p>
     </div>
 
-    <% if @place.photos.present? %>
-      <% if @place.photos.first.source.present? %>
-        <div class='show_other'>
-          <strong>画像ソース</strong><br>
-          <p><%= @place.photos.first.source %></p>
-        </div>
-      <% end %>
+    <% if user_signed_in? %>
+      <%= link_to '編集', edit_place_path(@place), class:'btn btn-info' %>
+    <% else %>
+      <button data-toggle='modal' data-target='sign-in-modal' id='sign-in-modal-btn' class="btn btn-info" type="button">編集</button>
     <% end %>
-
-  <%= link_to '編集', edit_place_path(@place), class:'btn btn-info' %>
-  <%= link_to '戻る', places_path, class:'btn btn-info'%>
-
-    <% unless user_signed_in? %>
-      <div>
-        <strong>編集にはアカウントが必要です。<br><a href='/users/sign_up' style='color:white; text-decoration: underline;'>こちら</a>からアカウントを作成してください。</strong><br>
-      </div>
-    <% end %>
+    <%= link_to '戻る', places_path, class:'btn btn-info'%>
 
   </div>
 
   <% if @place.photos.present? %>
     <% @place.photos.each do |photo| %>
       <%= image_tag photo.image.url, class: 'show_photo' %>
+      <div class='source-text'>画像ソース: <%= photo.source %></div>
     <% end %>
   <% end %>
 
 </div>
 
 <div class="show_map" id="map"></div>
+
+<!-- Modal -->
+<div id='sign-in-modal' class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">編集にはアカウントが必要です。</h4>
+      </div>
+      <div class="modal-body">
+        <p>アカウントをお持ちの方は<a href='/users/sign_in'>こちら</a>からログインしてください。</p>
+        <p>アカウントをお持ちでない場合は<a href='/users/sign_up'>こちら</a>から作成してください。</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <script type="text/javascript">
 

@@ -40,21 +40,13 @@ gem 'bootstrap-sass'
 gem 'markerclustererplus-rails'
 gem 'geocoder'
 gem 'kaminari' #ページネート
-gem 'ransack'
-
+gem 'ransack' #検索機能
 gem 'gon' #Rubyのインスタンス変数をjsに渡す
+gem 'pry-rails' #デバッグ
+gem 'paperclip', '~> 5.0.0' #写真アップ機能
+gem 'devise', '3.5.1' #ユーザー機能
+gem 'puma' #aws用
 
-#デバッグ
-gem 'pry-rails'
-
-#写真アップ機能
-gem 'paperclip', '~> 5.0.0'
-
-#ユーザー機能
-gem 'devise', '3.5.1'
-
-#aws用
-gem 'puma'
 ##########################################ここまで自分で追加
 
 group :development, :test do

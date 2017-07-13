@@ -39,8 +39,10 @@ gem 'hirb', '~> 0.7.3'
 gem 'bootstrap-sass'
 gem 'markerclustererplus-rails'
 gem 'geocoder'
-gem 'kaminari'
+gem 'kaminari' #ページネート
 gem 'ransack'
+
+gem 'gon' #Rubyのインスタンス変数をjsに渡す
 
 #デバッグ
 gem 'pry-rails'

@@ -1,0 +1,32 @@
+.signup-div {
+  display: inline-block;
+  color: white;
+  height: 90vh;
+}
+.signup-field {
+  margin: 20px 0px;
+}
+.signup-label {
+  float: left;
+}
+.signup-btn {
+  margin: 30px 0px;
+}
+.remember-me-checkbox {
+  float: left;
+}
+
+
+/* desktop */
+@media only screen and (min-width: 600px) {
+  .signup-div {
+    width: 250px;
+    height: 80vh;
+  }
+}
+/* mobile */
+@media only screen and (max-width: 600px) {
+  .signup-div {
+    height: 90vh;
+  }
+}

@@ -4,7 +4,8 @@ $(function () {
 
   //initialise datetimepicker
   $('#common-close, #mon-close, #tue-close, #wed-close, #thu-close, #fri-close, #sat-close, #sun-close, #common-open, #mon-open, #tue-open, #wed-open, #thu-open, #fri-open, #sat-open, #sun-open').timepicker({
-    timeFormat: 'H:i'
+    timeFormat: 'H:i',
+    scrollDefault: '09:00'
   });
 
   //input existing values

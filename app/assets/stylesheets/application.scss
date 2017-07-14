@@ -29,6 +29,13 @@
 .footer{
   display: none;
 }
+.vertical-align-parent {
+  display: table;
+}
+.vertical-align-child {
+  display: table-cell;
+  vertical-align: middle;
+}
 /////////////navbar/////////////////
 
 .navbar {

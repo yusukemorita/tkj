@@ -8,9 +8,16 @@
 .popover.right > .arrow {
   display: none;
 }
+//mobile
 @media only screen and (max-width: 600px) {
+  .new-parent {
+    width: 100%;
+    height: 60vh;
+    margin: 20px 0;
+  }
   .new_map {
     margin-top: 15px;
+    height: 100%;
   }
   .new_place {
     margin-top: 5px;
@@ -19,14 +26,23 @@
     margin-bottom: 5px;
   }
 }
+//desktop
 @media only screen and (min-width: 600px) {
+  .new-parent {
+    width: 100%;
+    height: calc(100vh - #{$nav-height} - #{$footer-height});
+    float: right;
+  }
   .new_map {
+    height: calc( calc(100vh - #{$nav-height} - #{$footer-height}) * 0.8);
     float: right;
   }
   .new_place {
     display: none;
     width: 30%;
     float: left;
+    margin-top: calc( calc(100vh - #{$nav-height} - #{$footer-height}) * 0.1);
+
   }
   .new_place .input-group {
     margin-bottom: 15px;

@@ -3,7 +3,7 @@
   var app;
 
   $(document).ready(function() {
-    console.log('public new.coffee called');
+    console.log('changed new.coffee called');
     return app.initialize();
   });
 
@@ -20,18 +20,10 @@
           top: available_height * 0.5,
           left: available_height * 0.3
         });
-        $('.new_map').css({
-          marginTop: available_height * 0.1,
-          marginBottom: available_height * 0.1,
-          height: available_height * 0.8
-        });
         return $('.new_place').css({
           marginTop: available_height * 0.1
         });
       } else {
-        $('.new_map').css({
-          height: $(window).height() * 0.6
-        });
         return $('.popover').css({
           top: $(window).height() * 0.3,
           left: ($(window).width() - $('.popover').width()) / 2 - 10

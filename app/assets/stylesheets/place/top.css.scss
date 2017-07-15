@@ -30,16 +30,17 @@
 }
 /* mobile */
 @media only screen and (max-width: 600px) {
+  .top-text {
+    margin: 5% 0;
+  }
+  .parent_circle {
+    width: 100%;
+  }
   .parent_circle .bottom .circle,
   .parent_circle .top {
     padding: 10% 0;
     text-align: center;
-    height: 20%;
     margin: 2.5%;
-  }
-  .parent_circle {
-    margin-top: auto;
-    margin-bottom: auto;
   }
   .parent_circle .bottom .circle,
   .parent_circle .top p{
@@ -54,6 +55,9 @@
 }
 /* desktop */
 @media only screen and (min-width: 600px) {
+  .top-text, .parent_circle {
+    height: calc(100vh - #{$nav-height} - #{$footer-height}) ;
+  }
   .parent_circle .bottom a:hover {
     text-decoration: none;
     -webkit-transform: scale(1.15);
@@ -65,7 +69,6 @@
   .parent_circle .top {
     padding: 10% 0;
     text-align: center;
-    height: 20%;
     margin: 2.5%;
   }
   .parent_circle {

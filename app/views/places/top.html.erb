@@ -1,6 +1,5 @@
-<%= javascript_include_tag "/assets/javascripts/top" %>
-<div class="parent">
-  <div class="child">
+<div class="top-text parent vertical-align-parent">
+  <div class="child vertical-align-child">
     <p class="wf-mplus1p main_text" style="font-weight:500;">練習場所がない！</p>
     <p class="wf-mplus1p sub_text">そんな人のために、全国の卓球場情報を集約</p>
     <div class="total-div wf-mplus1p" style="font-weight:500;">
@@ -14,21 +13,23 @@
   </div>
 </div>
 
-<div class="parent_circle">
-  <div class="top">
-    <p class="wf-mplus1p">地名で検索</p>
-    <%= form_tag({ controller: :places, action: :map}, {method: :get}) do %>
-      <div class="input-group top_input">
-        <%= text_field_tag :search, '', class: 'form-control' %>
-        <span class="input-group-btn">
-          <%= submit_tag '検索', class: 'btn btn-secondary' %>
-        </span>
-      </div>
-    <% end %>
-  </div>
-  <div class="bottom">
-    <%= link_to '現在地から検索', map_path(current: true), class: "wf-mplus1p circle left" %>
-    <%= link_to '一覧を表示', places_path, class: "wf-mplus1p circle right" %>
+<div class="parent_circle vertical-align-parent">
+  <div class="vertical-align-child">
+    <div class="top">
+      <p class="wf-mplus1p">地名で検索</p>
+      <%= form_tag({ controller: :places, action: :map}, {method: :get}) do %>
+        <div class="input-group top_input">
+          <%= text_field_tag :search, '', class: 'form-control' %>
+          <span class="input-group-btn">
+            <%= submit_tag '検索', class: 'btn btn-secondary' %>
+          </span>
+        </div>
+      <% end %>
+    </div>
+    <div class="bottom">
+      <%= link_to '現在地から検索', map_path(current: true), class: "wf-mplus1p circle left" %>
+      <%= link_to '一覧を表示', places_path, class: "wf-mplus1p circle right" %>
+    </div>
   </div>
 </div>
 

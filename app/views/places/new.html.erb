@@ -1,7 +1,11 @@
 <%= javascript_include_tag "/assets/javascripts/new" %>
 
-<input id="pac-input" style="width:50%;" class="controls" type="text" placeholder="卓球場を検索">
-<div id="map" class="new_map"></div>
+<div class="new-parent vertical-align-parent">
+  <div class="vertical-align-child">
+    <input id="pac-input" style="width:50%;" class="controls" type="text" placeholder="卓球場を検索">
+    <div id="map" class="new_map"></div>
+  </div>
+</div>
 
 <%= render 'form' %>
 
@@ -60,7 +64,7 @@
 				google.maps.event.addListener(marker, 'click', function(evt) {
           if ($(window).width() > 600){
             $('.new_place').show();
-            $('.new_map').css({
+            $('.new-parent').css({
               width: 60 + '%'
             });
           };

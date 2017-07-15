@@ -1,7 +1,5 @@
-<%= javascript_include_tag "/assets/javascripts/map" %>
-
-<div class="parent">
-  <div class="child">
+<div class="parent map-text vertical-align-parent">
+  <div class="child vertical-align-child">
     <p class="wf-mplus1p main_text" style="font-weight:500;">練習場所がない！</p>
     <p class="wf-mplus1p sub_text">そんな人のために、全国の卓球場情報を集約</p>
     <button type="button" id="current_pos_btn" class="btn btn-danger">現在地から検索</button>
@@ -12,8 +10,12 @@
   </div>
 </div>
 
-<input id="pac-input" class="controls" type="text" placeholder="地名で検索" style="width:60%;">
-<div id="map" class="map_map"></div>
+<div class="map-parent vertical-align-parent">
+  <div class="vertical-align-child">
+    <input id="pac-input" class="controls" type="text" placeholder="地名で検索" style="width:60%;">
+    <div id="map" class="map_map"></div>
+  </div>
+</div>
 
 <div class="mobile_twitter_div text-center">
   <p class="wf-mplus1p sub_text">SNSでシェア</p>

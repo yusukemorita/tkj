@@ -1,14 +1,8 @@
-.map_map, .parent {
-  margin-top: 5%;
-  margin-bottom: 5%;
-}
-.map_map {
-  bottom: 0px;
-  top: 0px;
-}
 .parent {
   width: 100%;
   text-align: center;
+}
+.map-text {
   height: 20%;
 }
 .parent .child .main_text {
@@ -21,9 +15,17 @@
 }
 /* mobile */
 @media only screen and (max-width: 600px) {
-  .map_map {
+  .map-text {
+    margin: 5% 0;
+  }
+  .map-parent {
     height: 600px;
-    width: auto;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .map_map {
+    height: 100%;
+    width: 100%;
   }
   .twitter_div {
     display: none;
@@ -31,9 +33,17 @@
 }
 /* desktop */
 @media only screen and (min-width: 600px) {
-  .map_map {
-    float: right;
+  .map-parent {
+    height: calc(100vh - #{$nav-height} - #{$footer-height});
     width: 60%;
+  }
+  .map_map {
+    height: calc( calc(100vh - #{$nav-height} - #{$footer-height}) * 0.8);
+    float: right;
+    width: 100%;
+  }
+  .map-text {
+    height: calc(100vh - #{$nav-height} - #{$footer-height});
   }
   .parent {
     margin-right: 5%;
@@ -41,10 +51,6 @@
     float: left;
     display: table;
     text-align: center;
-  }
-  .parent .child{
-    vertical-align: middle;
-    display: table-cell;
   }
   .parent .child .main_text {
     font-size: 2.7em;

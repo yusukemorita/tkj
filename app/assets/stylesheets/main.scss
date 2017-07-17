@@ -1,6 +1,4 @@
 @import "base/variables";
-@import "bootstrap-sprockets";
-@import "bootstrap";
 @import "place/top";
 @import "place/about";
 @import "place/form";
@@ -11,7 +9,6 @@
 @import "place/show";
 @import "devise/sign_up";
 @import "place/map";
-
 
 * {
   box-sizing: border-box;
@@ -35,26 +32,19 @@
 /////////////navbar/////////////////
 
 .navbar {
-  background: white;
-  border-radius: 0px;
-  border: none;
+  padding: 10px 16px;
+  .navbar-toggler { //メニューアイコンの上下位置がおかしいのでハードコーディングで修正
+    top: 4px;
+  }
+  .li_head{
+    display: table;
+    transition: 0.5s;
+    font-weight: 600;
+  }
 }
-.li_head{
-  display: table;
-  transition: 0.5s;
-  font-weight: 600;
-}
-.navbar .menu_icon{
-  right: 0px;
-  height: 10px;
-  width: 10px;
-  margin-bottom: 3px;
-}
+
 //desktop//
 @media only screen and (min-width: 600px) {
-  .yield_container {
-    margin-bottom: 50px;
-  }
   .footer{
     display: inline-block;
     position: fixed;
@@ -62,13 +52,17 @@
     height: $footer-height;
     background-color: #E8E8E8;
     bottom: 0px;
+    left: 0px;
   }
   body {
     background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url('/assets/background.jpg');
     background-repeat: no-repeat;
-    background-position: left top;
-    background-size: 100% auto;
+    background-position: center top;
+    background-size: auto;
     background-attachment: fixed;
+  }
+  .yield_container {
+    padding-bottom: $footer-height - 4px;
   }
 }
 

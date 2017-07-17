@@ -2,57 +2,82 @@
 <html>
 <head>
   <title>卓球マップ</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+  <!-- bootstrap javascripts -->
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script>console.log('jquery js');</script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script>console.log('tether js');</script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  <script>console.log('bootstrap js');</script>
+
+  <!-- bootstrap stylesheet -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <script>console.log('bootstrap stylesheet');</script>
+
+  <!-- google japanese font -->
   <link href="https://fonts.googleapis.com/earlyaccess/mplus1p.css" rel="stylesheet" />
+
+
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
+
+  <!-- bootstrap toggle switch -->
   <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
   <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+  <!-- jquery timepicker -->
   <%= javascript_include_tag 'jquery_timepicker' %>
   <%= stylesheet_link_tag    'jquery_timepicker', media: 'all' %>
+
+  <!-- Gon : use ruby variables in javascript -->
   <%= Gon::Base.render_data %>
+
   <%= csrf_meta_tags %>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <!-- Navigation -->
-  <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <div class="container">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header page-scroll">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>MENU <%= image_tag("menu.png", :class => "menu_icon") %></i>
-        </button>
-        <a class="li_head wf-mplus1p navbar-brand page-scroll" href="/">卓球マップ</a>
-      </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-left">
-          <li><a class="page-scroll wf-mplus1p" href="/">トップ</a></li>
-          <li><a class="page-scroll wf-mplus1p" href="/map">マップ</a></li>
-          <li><a class="page-scroll wf-mplus1p" href="/places">卓球場一覧</a></li>
-          <li><a class="page-scroll wf-mplus1p" href="/places/new">卓球場を登録</a></li>
-          <li><a class="page-scroll wf-mplus1p" href="/about">当サイトについて</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <% if user_signed_in? %>
-                 <li><%= link_to "ログアウト", destroy_user_session_path, :method => :delete %></li>
-          <% else %>
-            <li><a class="page-scroll" href="/users/sign_in">ログイン</a></li>
-          <% end %>
-        </ul>
-      </div>
-      <!-- /.navbar-collapse -->
+  <nav class="navbar fixed-top navbar-toggleable-md navbar-light bg-faded wf-mplus1p">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand li_head" href="/">卓球マップ</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">トップ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/map">マップ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/places">卓球場一覧</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/places/new">卓球場を登録</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">当サイトについて</a>
+        </li>
+      </ul>
     </div>
-    <!-- /.container-fluid -->
   </nav>
 
   <div class="container yield_container">
     <%= yield %>
   </div>
 
-  <div class="footer"></div>
+  <footer class="footer"></footer>
 
+  <!-- analytics script -->
   <%= render 'layouts/footer' %>
 
 </body>

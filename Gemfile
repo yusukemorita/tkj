@@ -6,7 +6,7 @@ gem 'rails', '4.2.0'
 #gem 'sqlite3'
 gem 'mysql2'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -36,7 +36,6 @@ gem 'unicorn'
 
 ##########################################自分で追加したgem
 gem 'hirb', '~> 0.7.3'
-gem 'bootstrap-sass'
 gem 'markerclustererplus-rails'
 gem 'geocoder'
 gem 'kaminari' #ページネート
@@ -46,7 +45,6 @@ gem 'pry-rails' #デバッグ
 gem 'paperclip', '~> 5.0.0' #写真アップ機能
 gem 'devise', '3.5.1' #ユーザー機能
 gem 'puma' #aws用
-
 ##########################################ここまで自分で追加
 
 group :development, :test do

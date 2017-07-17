@@ -3,23 +3,16 @@
   var app;
 
   $(document).ready(function() {
-    console.log('changed new.coffee called');
+    console.log('new.coffee called');
     return app.initialize();
   });
 
   app = {
     initialize: function() {
       var available_height;
-      $('.step1_popover').popover('show');
-      $('.popover').click(function() {
-        return $('.step1_popover').popover('hide');
-      });
+      $('#newModal').modal('show');
       if ($(window).width() > 600) {
         available_height = $(window).outerHeight(true) - $('.navbar').outerHeight() - $('.footer').height();
-        $('.popover').css({
-          top: available_height * 0.5,
-          left: available_height * 0.3
-        });
         return $('.new_place').css({
           marginTop: available_height * 0.1
         });

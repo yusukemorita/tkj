@@ -1,6 +1,6 @@
 <div class="parent map-text vertical-align-parent">
   <div class="child vertical-align-child">
-    <p class="wf-mplus1p main_text" style="font-weight:500;">練習場所がない！</p>
+    <span class="wf-mplus1p main_text" style="font-weight:500;">練習場所がない！</span>
     <p class="wf-mplus1p sub_text">そんな人のために、全国の卓球場情報を集約</p>
     <button type="button" id="current_pos_btn" class="btn btn-danger">現在地から検索</button>
     <div class="twitter_div">
@@ -18,7 +18,7 @@
 </div>
 
 <div class="mobile_twitter_div text-center">
-  <p class="wf-mplus1p sub_text">SNSでシェア</p>
+  <span class="wf-mplus1p sub_text">SNSでシェア</span>
   <p><a href="https://twitter.com/share" class="twitter-share-button" data-url="https://takkyuumap.com" data-text="全国450以上のの卓球場情報を集約した「卓球マップ」、現在地や地名から検索も！" data-hashtags="卓球マップ">Tweet</a></p>
 </div>
 
@@ -39,7 +39,7 @@
     var initial_center = {lat: <%= @search_latlng["lat"] %>, lng: <%= @search_latlng["lng"] %>};
     var initial_zoom = 13;
   <% else %>
-    var initial_center = {lat: 38.5, lng: 132.5};
+    var initial_center = {lat: 38.5, lng: 136.5};
     var initial_zoom = 5;
   <% end %>
 

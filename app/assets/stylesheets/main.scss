@@ -45,6 +45,10 @@
 
 //desktop//
 @media only screen and (min-width: 600px) {
+  .nav-item {
+    margin: 0 10px;
+    text-align: center;
+  }
   .footer{
     display: inline-block;
     position: fixed;
@@ -62,6 +66,7 @@
     background-attachment: fixed;
   }
   .yield_container {
+    padding-top: $nav-height - 40px;
     padding-bottom: $footer-height - 4px;
   }
 }

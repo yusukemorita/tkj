@@ -79,4 +79,7 @@
     background-attachment: fixed;
     background-size: auto 100%;
   }
+  .yield_container {
+    padding-top: 52px - 40px; /*モバイルのnavbarは高さ52px */
+  }
 }

@@ -41,9 +41,9 @@
 
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= controller_name %>-<%= action_name %>">
 
-  <nav class="navbar fixed-top navbar-toggleable-md navbar-light bg-faded wf-mplus1p">
+  <nav class="navbar fixed-top navbar-toggleable-md navbar-light bg-faded wf-mplus1p navbar-<%= controller_name %>-<%= action_name %>">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 
       <span class="navbar-toggler-icon"></span>

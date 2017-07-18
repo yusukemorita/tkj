@@ -9,7 +9,7 @@
   <div class="row justify-content-around">
 
     <div class="dropdown search col-xs-4">
-      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">都道府県絞り込み</button>
+      <button class="btn btn-original dropdown-toggle" type="button" data-toggle="dropdown">都道府県絞り込み</button>
       <div class="dropdown-menu">
         <%= link_to '東京都', places_path(prefecture: '東京都'), class: 'dropdown-item' %>
         <%= link_to '神奈川県', places_path(prefecture: '神奈川県'), class: 'dropdown-item' %>
@@ -66,14 +66,14 @@
         <div class="input-group title-search">
           <%= f.search_field :title_cont, class: 'form-control', placeholder:'名前を検索' %>
           <span class="input-group-btn">
-            <button class="btn btn-primary" type="submit">検索</button>
+            <button class="btn btn-original" type="submit">検索</button>
           </span>
         </div>
       <% end %>
     </div>
 
     <div class="search col-xs-4">
-      <button class="btn btn-primary" type="button" href="/places"><span class="mobile_hide">絞り込みを</span>元に戻す</button>
+      <button class="btn btn-original" type="button" href="/places"><span class="mobile_hide">絞り込みを</span>元に戻す</button>
     </div>
 
   </div>
@@ -102,9 +102,9 @@
           </p>
         </div>
         <div class="card-footer">
-          <%= link_to '詳細', place, class:'btn btn-primary show_btn' %>
+          <%= link_to '詳細', place, class:'btn btn-original show_btn' %>
           <% if place.url.present? %>
-            <%= link_to 'HP', place.url, class:'btn btn-primary show_btn' %>
+            <%= link_to 'HP', place.url, class:'btn btn-original show_btn' %>
           <% end %>
         </div>
       </div>

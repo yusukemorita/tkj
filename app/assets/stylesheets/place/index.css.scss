@@ -1,6 +1,5 @@
 .index_title {
   text-align: center;
-  color: white;
 }
 .dropdown-menu {
   height: 300px;
@@ -31,6 +30,7 @@
 @media only screen and (min-width: 600px) {
   .index_title {
     padding-top: 30px;
+    color: white;
   }
   .card {
     width: 300px;
@@ -46,6 +46,15 @@
 }
 /* mobile */
 @media only screen and (max-width: 600px) {
+  .places-index {
+    background: #F7F7F9;
+    background: #e3e3e3;
+  }
+  .card {
+    .card-footer {
+      background-color: white;
+    }
+  }
   .index_title {
     font-size: 8vw;
   }
@@ -54,5 +63,8 @@
   }
   .search {
     margin-bottom: 10px;
+  }
+  .navbar-places-index {
+    background-color: #89bdd3;
   }
 }

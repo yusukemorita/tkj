@@ -1,5 +1,15 @@
 <%= javascript_include_tag "show_2" %>
 
+<% content_for :head do %>
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@takkyuumap" />
+  <meta name="twitter:title" content="<%= @place.title %>" />
+  <meta name="twitter:description" content="<%= @place.address %><br>開館時間:<%= raw show_hours_twitter(@place) %>" />
+  <% if @place.photos.present? %>
+    <meta name="twitter:image" content="<%= @place.photos.first.image.url %>" />
+  <% end %>
+<% end %>
+
 <div id="notice" style="color:white"><%= notice %></div>
 
 <div class="show_text wf-mplus1p">
@@ -30,42 +40,10 @@
       </div>
     </div>
 
-    <% if @place.hours.present? && @place.hours['common_flag'] == true %>
-      <div class='show_other show-part'>
-        <strong>開館時間</strong><br>
-        <!-- 全曜日共通の場合 -->
-          <p><%= @place.hours['hours']['open'] %> ~ <%= @place.hours['hours']['close'] %></p>
-      </div>
-
-      <% if @place.hours['closed_days'].present? %>
-        <div class='show_other show-part'>
-          <br><strong>休館日</strong>
-          <p><%= num_to_day(@place.hours['closed_days']) %></p>
-        </div>
-      <% end %>
-
-    <!-- 曜日毎に異なる場合 -->
-    <% elsif @place.hours.present? && @place.hours['common_flag'] == false %>
-
-      <div class='show_other show-part'>
-        <strong>開館時間</strong><br>
-        <ul>
-          <% ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'].each do |symbol| %>
-            <% if @place.hours['hours'][symbol].present? %>
-              <li><%= sym_to_day(symbol) %>: <%= @place.hours['hours'][symbol]['open'] %> ~ <%= @place.hours['hours'][symbol]['close'] %></li>
-            <% end %>
-          <% end %>
-        </ul>
-      </div>
-
-
-    <% else %>
-      <div class='show_other show-part'>
-        <strong>開館時間</strong><br>
-        <!-- 全曜日共通の場合 -->
-        <p>未登録</p>
-      </div>
-    <% end %>
+    <div class='show_other show-part'>
+      <strong>開館時間</strong><br>
+      <%= raw show_hours(@place) %>
+    </div>
 
     <div class='show_other show-part'>
       <strong>その他</strong><br>

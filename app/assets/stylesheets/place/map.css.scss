@@ -34,16 +34,16 @@
 /* desktop */
 @media only screen and (min-width: 600px) {
   .map-parent {
-    height: calc(100vh - #{$nav-height} - #{$footer-height});
+    height: calc(100vh - #{$desktop-nav-height} - #{$footer-height});
     width: 60%;
   }
   .map_map {
-    height: calc( calc(100vh - #{$nav-height} - #{$footer-height}) * 0.8);
+    height: calc( calc(100vh - #{$desktop-nav-height} - #{$footer-height}) * 0.8);
     float: right;
     width: 100%;
   }
   .map-text {
-    height: calc(100vh - #{$nav-height} - #{$footer-height});
+    height: calc(100vh - #{$desktop-nav-height} - #{$footer-height});
   }
   .parent {
     margin-right: 5%;

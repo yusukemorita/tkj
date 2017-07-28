@@ -33,15 +33,24 @@
 
     <p class="input-title">営業時間</p>
 
-    <div class="text-center">
-      <input id='hours-toggle' type="checkbox" checked data-toggle="toggle" data-width="120" data-height="60" data-on="全曜日共通<br>で設定する" data-off="曜日毎<br>に設定する" data-offstyle="warning" /><br>
+    <div class="d-flex">
+      <div class="row justify-content-center">
+        <div class='toggle-title checked-title'><strong>全曜日共通　</strong></div>
+        <div>
+          <label class="switch">
+            <input type="checkbox" id="hours-toggle">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class='toggle-title unchecked-title'><strong>　曜日ごとに設定する</strong></div>
+      </div>
     </div>
 
     <div class="common-time">
       <%= render 'places/hours', locals: {day: 'common'} %>
 
+      <p class="input-title common-time-title">休館日</p>
       <div class='container'>
-        <div class='input-title'>休館日</div>
         <div class="form-check form-check-inline"> <label class="form-check-label">
             <input class="form-check-input" type="checkbox" id="mon-box" value='1'> 月
           </label>

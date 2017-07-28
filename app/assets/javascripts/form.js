@@ -60,10 +60,22 @@ $(function () {
   //listen for toggle change
   $('#hours-toggle').change(function() {
     var toggle_val = $('#hours-toggle').prop('checked');
-    if (toggle_val === true) {
+    if (toggle_val === false) {
+      $('.checked-title').css({
+        "color": "#ec971f"
+      });
+      $('.unchecked-title').css({
+        "color": "grey"
+      });
       $('.seperate-time').hide();
       $('.common-time').show();
     } else {
+      $('.checked-title').css({
+        "color": "grey"
+      });
+      $('.unchecked-title').css({
+        "color": "#2196F3"
+      });
       $('.common-time').hide();
       $('.seperate-time').show();
     }
@@ -72,7 +84,7 @@ $(function () {
   function makeHash(){
 
     //営業時間が毎日共通の場合
-    if ($('#hours-toggle').prop('checked') === true) {
+    if ($('#hours-toggle').prop('checked') === false) {
       var closed_days = []
       var checkboxes = ['mon-box', 'tue-box', 'wed-box', 'thu-box', 'fri-box', 'sat-box', 'sun-box']
       checkboxes.forEach(function(item) {

@@ -80,4 +80,7 @@ module PlacesHelper
     else
       "未登録"
     end
+
+  end
+
 end

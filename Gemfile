@@ -45,6 +45,7 @@ gem 'pry-rails' #デバッグ
 gem 'paperclip', '~> 5.0.0' #写真アップ機能
 gem 'devise', '3.5.1' #ユーザー機能
 gem 'puma' #aws用
+gem 'twitter' #twitterbot
 ##########################################ここまで自分で追加
 
 group :development, :test do

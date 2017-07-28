@@ -60,7 +60,6 @@ $(function () {
   //listen for toggle change
   $('#hours-toggle').change(function() {
     var toggle_val = $('#hours-toggle').prop('checked');
-    console.log(toggle_val);
     if (toggle_val === false) {
       $('.checked-title').css({
         "color": "#ec971f"

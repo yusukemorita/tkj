@@ -1,2 +1,5 @@
-$nav-height: 60px; //ここで定義している訳ではなく、bootstrapのデフォルトの値が57px
+//nav-heightはここで定義している訳ではなく、bootstrapのデフォルトの値
+$mobile-nav-height: 52px;
+$desktop-nav-height: 60px;
+
 $footer-height: 50px;

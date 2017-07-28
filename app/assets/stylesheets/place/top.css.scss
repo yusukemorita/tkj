@@ -56,7 +56,7 @@
 /* desktop */
 @media only screen and (min-width: 600px) {
   .top-text, .parent_circle {
-    height: calc(100vh - #{$nav-height} - #{$footer-height}) ;
+    height: calc(100vh - #{$desktop-nav-height} - #{$footer-height}) ;
   }
   .parent_circle .bottom a:hover {
     text-decoration: none;

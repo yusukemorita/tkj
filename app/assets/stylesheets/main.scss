@@ -9,6 +9,7 @@
 @import "place/show";
 @import "devise/sign_up";
 @import "place/map";
+@import "place/edit";
 
 * {
   box-sizing: border-box;
@@ -47,6 +48,14 @@
   border: none;
   color: white;
 }
+.yield_container {
+  @media only screen and (min-width: 992px) {
+    margin-top: $desktop-nav-height;
+  }
+  @media only screen and (max-width: 991px) {
+    margin-top: $mobile-nav-height;
+  }
+}
 
 //desktop//
 @media only screen and (min-width: 600px) {
@@ -71,10 +80,6 @@
     background-size: auto;
     background-attachment: fixed;
   }
-  .yield_container {
-    padding-top: $nav-height - 40px;
-    padding-bottom: $footer-height - 4px;
-  }
 }
 
 /* mobile */
@@ -84,8 +89,5 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: auto 100%;
-  }
-  .yield_container {
-    padding-top: 52px - 40px; /*モバイルのnavbarは高さ52px */
   }
 }
